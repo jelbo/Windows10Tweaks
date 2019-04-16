@@ -315,7 +315,7 @@ Windows Registry Editor Version 5.00
 ;Context Menu - Disable Pin To Start entry
 "{470C0EBD-5D73-4d58-9CED-E91E22E23282}"=""
 
-;Context Menu - Disable Share entry
+;Context Menu - Disable Share entry (Modern Sharing)
 "{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}"=""
 
 ;Context Menu - Disable Scan with Windows Defender... entry
