@@ -317,6 +317,7 @@ Windows Registry Editor Version 5.00
 
 ;Context Menu - Disable 'Pin To Start' entry
 "{470C0EBD-5D73-4d58-9CED-E91E22E23282}"=""
+;"{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}"=""
 
 ;Context Menu - Disable 'Share' entry (Modern Sharing)
 "{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}"=""
@@ -325,18 +326,21 @@ Windows Registry Editor Version 5.00
 "{09A47860-11B0-4DA5-AFA5-26D86198A780}"=""
 
 ;Context Menu - 'Disable Pin To Taskbar' entry
+;"{90AA3A4E-1CBA-4233-B8BB-535773D48449}"="" (doesn't work?)
 [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\{90AA3A4E-1CBA-4233-B8BB-535773D48449}]
 
 ;Context Menu - Remove 'Pin to Quick Access' entry
 [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
 
-;Context Menu - Remove 'Troubleshoot Compatibility' context menu entry (Deprecated? if not, better to block by GUID)
+;Context Menu - Remove 'Troubleshoot Compatibility' entry
 [-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\Compatibility]
 [-HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\Compatibility]
+;Find GUID so I can block it instead
 
 ;Context Menu - Remove 'Include In Library' entry
 [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\Library Location]
+;Find GUID so I can block it instead
 
 ;Disable Malicious Software Removal Tool
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
