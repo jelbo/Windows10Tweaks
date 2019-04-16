@@ -80,14 +80,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
 
-;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (official way) (doesn't work)
-[HKEY_CURRENT_USER\Software\Policies\Adobe\CreativeCloud]
-"unPinCCF"=dword:00000001
-
-;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (dirty way) (doesn't work)
-[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-FCA69971F5C4}]
-"System.IsPinnedToNameSpaceTree"=dword:00000000
-
 ;Navigation Pane - Remove Redundant Removable Drive Icon
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
