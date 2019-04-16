@@ -318,6 +318,9 @@ Windows Registry Editor Version 5.00
 ;Context Menu - Disable Share entry
 "{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}"=""
 
+;Context Menu - Disable Scan with Windows Defender... entry
+"{09A47860-11B0-4DA5-AFA5-26D86198A780}"=""
+
 ;Context Menu - Disable Pin To Taskbar entry
 [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\{90AA3A4E-1CBA-4233-B8BB-535773D48449}]
 
