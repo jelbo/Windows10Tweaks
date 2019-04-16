@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (official way) (doesn't work)
+[HKEY_CURRENT_USER\Software\Policies\Adobe\CreativeCloud]
+"unPinCCF"=dword:00000001
+
+;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (dirty way) (doesn't work)
+[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-FCA69971F5C4}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
