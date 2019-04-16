@@ -309,6 +309,9 @@ Windows Registry Editor Version 5.00
 ;Context Menu - Disable 'Give Access To' entry (also removes Sharing tab in Properties!)
 "{F81E9010-6EA4-11CE-A7FF-00AA003CA9F6}"=""
 
+;Context Menu - Disable 'move to OneDrive' entry
+"{CB3D0F55-BC2C-4C1A-85ED-23ED75B5106B}"=""
+
 ;Context Menu - Disable 'Pin To Start' entry
 "{470C0EBD-5D73-4d58-9CED-E91E22E23282}"=""
 ;"{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}"=""
