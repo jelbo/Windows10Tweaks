@@ -2,6 +2,11 @@ Windows Registry Editor Version 5.00
 
 ;============ Explorer ===========
 
+;Explorer - Disable automatic folder type discovery
+[-HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags]
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
+"FolderType"="NotSpecified"
+
 ;Explorer - Remember my views
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "NoSaveSettings"=dword:00000000
@@ -81,11 +86,6 @@ Windows Registry Editor Version 5.00
 ;Navigation Pane - Remove Redundant Removable Drive Icon
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
-
-;Disable Automatic Folder Type Discovery
-[-HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags]
-[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
-"FolderType"="NotSpecified"
 
 ;============ Taskbar ===========
 
@@ -195,7 +195,7 @@ Windows Registry Editor Version 5.00
 ;Alt-Tab - 80% dimmed desktop background 
 "BackgroundDimmingLayer_percent"=dword:00000050
 
-;Disable Wide Context Menus
+;Disable wide context menus
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]
 "ImmersiveContextMenu"=dword:00000000
 
@@ -211,7 +211,7 @@ Windows Registry Editor Version 5.00
 
 ;TODO: Animations, etc.
 
-;============ Miscellaneous ===========
+;=========== Miscellaneous ===========
 
 ;Mouse - Disable Menu Show Delay
 [HKEY_CURRENT_USER\Control Panel\Desktop]
