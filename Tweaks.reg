@@ -209,15 +209,48 @@ Windows Registry Editor Version 5.00
 ;Themes - Prevent Windows themes from changing wallpaper
 "WallpaperSetFromTheme"=dword:00000000
 
+;TODO: Animations, etc.
+
 ;============ Miscellaneous ===========
 
-;Disable Menu Show Delay
+;Mouse - Disable Menu Show Delay
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "MenuShowDelay"="0"
 
-;Disable Mouse Hover Delay
+;Mouse - Disable Mouse Hover Delay
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseHoverTime"="0"
+
+;Mouse - Speed at default 6
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSensitivity"="10"
+
+;Mouse - MarkC Mouse Acceleration Fix: 1:1 mouse movement (with 100% DPI, speed at default 6)
+"SmoothMouseXCurve"=hex:\
+	00,00,00,00,00,00,00,00,\
+	C0,CC,0C,00,00,00,00,00,\
+	80,99,19,00,00,00,00,00,\
+	40,66,26,00,00,00,00,00,\
+	00,33,33,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+	00,00,00,00,00,00,00,00,\
+	00,00,38,00,00,00,00,00,\
+	00,00,70,00,00,00,00,00,\
+	00,00,A8,00,00,00,00,00,\
+	00,00,E0,00,00,00,00,00
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+
+;Mouse - Disable 'Enhance pointer precision'
+"MouseSpeed"="0"
+
+;Mouse - MarkC Mouse Acceleration Fix: disable mouse acceleration on login screen
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+
+;Mouse - Disable 'Enhance pointer precision' on login screen
+"MouseSpeed"="0"
 
 ;Don't add "- Shortcut" text to the name of newly created shortcuts
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
