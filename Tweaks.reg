@@ -31,6 +31,9 @@ Windows Registry Editor Version 5.00
 ;Explorer - Don't change the upper/lower case of filenames
 "DontPrettyPath"=dword:00000000
 
+;Explorer - Disable 'Use Sharing Wizard'
+"SharingWizardOn"=dword:00000000
+
 ;Explorer - Don't show notifications/adverts (OneDrive & new feature alerts)
 "ShowSyncProviderNotifications"=dword:00000001
 
@@ -305,38 +308,34 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\RunAs\Command]
 @="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \"%1\""
 
-;Context Menu - Disable Restore Previous Versions entry
+;Context Menu - Disable 'Restore Previous Versions' entry
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
 "{596AB062-B4D2-4215-9F74-E9109B0A8153}"=""
 
-;Context Menu - Disable Give Access To entry (POTENTIALLY REMOVES SHARING PROPERTIES TAB TOO)
+;Context Menu - Disable 'Give Access To' entry (also removes Sharing tab in Properties!)
 "{F81E9010-6EA4-11CE-A7FF-00AA003CA9F6}"=""
 
-;Context Menu - Disable Pin To Start entry
+;Context Menu - Disable 'Pin To Start' entry
 "{470C0EBD-5D73-4d58-9CED-E91E22E23282}"=""
 
-;Context Menu - Disable Share entry (Modern Sharing)
+;Context Menu - Disable 'Share' entry (Modern Sharing)
 "{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}"=""
 
-;Context Menu - Disable Scan with Windows Defender... entry
+;Context Menu - Disable 'Scan with Windows Defender...' entry
 "{09A47860-11B0-4DA5-AFA5-26D86198A780}"=""
 
-;Context Menu - Disable Pin To Taskbar entry
+;Context Menu - 'Disable Pin To Taskbar' entry
 [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\{90AA3A4E-1CBA-4233-B8BB-535773D48449}]
 
-;Context Menu - Remove Pin to Quick Access entry
+;Context Menu - Remove 'Pin to Quick Access' entry
 [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
 
-;Context Menu - Remove Pin to Start Menu entry
-[HKEY_CLASSES_ROOT\Launcher.AllAppsDesktopApplication\shellex\ContextMenuHandlers\PintoStartScreen]
-@="{470C0EBD-5D73-4d58-9CED-E91E22E23282}"
-
-;Context Menu - Remove Troubleshoot Compatibility context menu entry
+;Context Menu - Remove 'Troubleshoot Compatibility' context menu entry (Deprecated? if not, better to block by GUID)
 [-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\Compatibility]
 [-HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\Compatibility]
 
-;Context Menu - Remove Include In Library entry
+;Context Menu - Remove 'Include In Library' entry
 [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\Library Location]
 
 ;Disable Malicious Software Removal Tool
