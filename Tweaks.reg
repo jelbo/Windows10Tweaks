@@ -370,3 +370,14 @@ Windows Registry Editor Version 5.00
 ;Disable Windows Error Reporting
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
 "Disabled"=dword:00000001
+
+;Windows Update - Enable postponing automatic restarts for updates
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"SetAutoRestartDeadline"=dword:00000001
+
+;Windows Update - Set the number of days before a pending restart for Quality Updates will automatically be executed outside of Active Hours to 30 (maximum)
+"AutoRestartDeadlinePeriodInDays"=dword:0000001e
+
+;Windows Update - Set the number of days before a pending restart for Feature Updates will automatically be executed outside of Active Hours to 30 (maximum)
+"AutoRestartDeadlinePeriodInDaysForFeatureUpdates"=dword:0000001e
+
