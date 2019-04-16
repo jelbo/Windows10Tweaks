@@ -1,0 +1,421 @@
+Windows Registry Editor Version 5.00
+
+;============ Explorer ===========
+
+;Remember my Explorer views
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"NoSaveSettings"=dword:00000000
+
+;Explorer with the Ribbon always maximized
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"ExplorerRibbonStartsMinimized"=dword:00000004
+
+;Launch to This PC instead of Quick Access
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"LaunchTo"=dword:00000001
+
+;Show hidden files, folders and drives
+"Hidden"=dword:00000001
+
+;Display protected operating system files
+"ShowSuperHidden"=dword:00000001
+
+;Don't hide extensions for known file types
+"HideFileExt"=dword:00000000
+
+;Don't change the upper/lower case of filenames
+"DontPrettyPath"=dword:00000000
+
+;Don't show notifications/adverts (OneDrive & new feature alerts) in Windows Explorer
+"ShowSyncProviderNotifications"=dword:00000001
+
+;Launch folder windows in a separate process (separate explorer.exe Shell/File Explorer)
+"SeparateProcess"=dword:00000001
+
+;Hide the status bar in Explorer (if you use Classic Shell or Open Shell's status bar)
+"ShowStatusBar"=dword:00000000
+
+;Enable Server Admin UI (?)
+"ServerAdminUI"=dword:00000001
+
+;Navigation Pane - Show all folders in Explorer including Recycle Bin, Desktop, Control Panel
+"NavPaneShowAllFolders"=dword:00000001
+
+;Navigation Pane - Automatically expand to current folder
+"NavPaneExpandToCurrentFolder"=dword:00000001
+
+;Navigation Pane - Hide Shell Folder 3D Objects
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideMyComputerIcons]
+"{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"=dword:00000001
+
+;Navigation Pane - Hide Desktop (Shell Folder)
+"{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"=dword:00000001
+
+;Navigation Pane - Hide Documents (Shell Folder)
+"{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
+
+;Navigation Pane - Hide Downloads (Shell Folder)
+"{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
+
+;Navigation Pane - Hide Music (Shell Folder)
+"{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}"=dword:00000001
+
+;Navigation Pane - Hide Pictures (Shell Folder)
+"{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
+
+;Navigation Pane - Hide Videos (Shell Folder)
+"{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}"=dword:00000001
+
+;Navigation Pane - Hide OneDrive (Shell Folder)
+[HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+[HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (DOES NOT WORK)
+[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-FCA69971F5C4}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+[HKEY_CURRENT_USER\Software\Policies\Adobe\CreativeCloud]
+"unPinCCF"=dword:00000001
+
+;Navigation Pane - Remove Redundant Removable Drive Icon
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
+
+;Disable Automatic Folder Type Discovery
+[-HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags]
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
+"FolderType"="NotSpecified"
+
+;============ Taskbar ===========
+
+;Taskbar - Use small taskbar buttons
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"TaskbarSmallIcons"=dword:00000001
+
+;Taskbar - Lock the taskbar
+"TaskbarSizeMove"=dword:00000000
+
+;Taskbar - Disable combining taskbar buttons (no Glomming)
+"TaskbarGlomming"=dword:00000000
+
+;Taskbar - Disable grouping taskbar buttons
+"NoTaskGrouping"=dword:00000001
+
+;Taskbar - Hide People Bar
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+"HidePeopleBar"=dword:00000001
+
+;Taskbar - Hide Task View button
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ShowTaskViewButton"=dword:00000000
+
+;Taskbar - Disable combining taskbar buttons
+"TaskbarGlomLevel"=dword:00000002
+
+;Taskbar - Show seconds in SysTray Clock
+"ShowSecondsInSystemClock"=dword:00000001
+
+;Taskbar - Increase transparency
+"UseOLEDTaskbarTransparency"=dword:00000001
+
+;Taskbar - Enable animations
+"TaskbarAnimations"=dword:00000001
+
+;Taskbar - Show all icons in the System Tray
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"EnableAutoTray"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+;Taskbar - Disable web search
+"BingSearchEnabled"=dword:00000000
+"AllowSearchToUseLocation"=dword:00000000
+"CortanaConsent"=dword:00000000
+
+;DISABLE SEARCH BAR
+;TODO
+
+;============ Start menu ===========
+
+;Start Menu - Show the log off option
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"StartMenuLogOff"=dword:00000001
+
+;Start Menu - Disable suggestions
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SystemPaneSuggestionsEnabled"=dword:00000000
+
+;Start Menu - Disable Live Tiles
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+"NoTileApplicationNotification"=dword:00000001
+
+;============ Personalization ===========
+
+;Enable colored title bars
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\DWM]
+"EnableWindowColorization"=dword:00000001
+"ColorPrevalence"=dword:00000001
+
+;Enable colored title bar: dark grey for active
+"AccentColor"=dword:ff473f3c
+
+;Enable colored title bar: light grey for inactive
+"AccentColorInactive"=dword:ffc0c0c0
+
+;NEEDS RESEARCH
+"ColorizationAfterglow"=dword:c43c3f47
+"ColorizationAfterglowBalance"=dword:0000000a
+"ColorizationBlurBalance"=dword:00000001
+"ColorizationColor"=dword:c43c3f47
+"ColorizationColorBalance"=dword:00000059
+"ColorizationGlassAttribute"=dword:00000001
+
+;NEEDS RESEARCH
+"EnableAeroPeek"=dword:00000000
+
+;NEEDS RESEARCH
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
+"AccentPalette"=hex:62,67,74,ff,52,56,61,ff,47,4a,54,ff,3c,3f,47,ff,30,33,39,\
+  ff,25,27,2c,ff,15,16,19,ff,88,17,98,00
+"StartColorMenu"=dword:ff393330
+"AccentColorMenu"=dword:ff473f3c
+
+;Logon/lock screen - Apply the default user picture to all users (re-enables user-192.png)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"UseDefaultTile"=dword:00000001
+
+;Logon screen - Disable acrylic blur effect on sign-in screen background
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"DisableAcrylicBackgroundOnLogon"=dword:00000001
+
+;Alt-Tab - Transparent background
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
+"Grid_backgroundPercent"=dword:00000000
+
+;Alt-Tab - 80% dimmed desktop background 
+"BackgroundDimmingLayer_percent"=dword:00000050
+
+;Disable Wide Context Menus
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]
+"ImmersiveContextMenu"=dword:00000000
+
+;Themes - Prevent Windows themes from changing cursors
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
+"ThemeChangesMousePointers"=dword:00000000
+
+;Themes - Prevent Windows themes from changing icons
+"ThemeChangesDesktopIcons"=dword:00000000
+
+;Themes - Prevent Windows themes from changing wallpaper
+"WallpaperSetFromTheme"=dword:00000000
+
+;============ Miscellaneous ===========
+
+;Disable Menu Show Delay
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"MenuShowDelay"="0"
+
+;Disable Mouse Hover Delay
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseHoverTime"="0"
+
+;Don't add "- Shortcut" text to the name of newly created shortcuts
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"link"=hex:00,00,00,00
+
+;Don't prompt to 'Look for an app in the Store'
+"NoUseStoreOpenWith"=dword:00000001
+
+;Display verbose messages during login 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"VerboseStatus"=dword:00000001
+
+;Forces symbolic links to be written to both linked logon sessions that are created, when UAC is enabled
+"EnableLinkedConnections"=dword:00000001
+
+;Disable Cortana
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"AllowCortana"=dword:00000000
+
+;Disable 'You have new apps that can open this type of file'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"NoNewAppAlert"=dword:00000001
+
+;Disable Aero Shake
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"DisallowShaking"=dword:00000001
+
+;Don't replace Command Prompt with Windows PowerShell in the right-click start button menu or when pressing Windows key + X
+"DontUsePowerShellOnWinX"=dword:00000001
+
+;Disable blocking downloaded files (Attachment Manager)
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
+"SaveZoneInformation"=dword:00000001
+
+;Add Console Lock Display power off timeout to Power Control Panel
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\8EC4B3A5-6868-48c2-BE75-4F3044BE88A7]
+"Attributes"=dword:00000002
+
+;Disable Lock Screen #1
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\SessionData]
+"AllowLockScreen"=dword:00000000
+
+;Disable Lock Screen #2
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoLockScreen"=dword:00000001
+
+;Disable Aero Snap
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"WindowArrangementActive"=dword:00000000
+
+;Add-run-with-powershell-as-administrator (NEED TESTING)
+[HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\RunAs\Command]
+@="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \"%1\""
+
+;Context Menu - Disable Restore Previous Versions entry
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
+"{596AB062-B4D2-4215-9F74-E9109B0A8153}"=""
+
+;Context Menu - Disable Give Access To entry (POTENTIALLY REMOVES SHARING PROPERTIES TAB TOO)
+"{F81E9010-6EA4-11CE-A7FF-00AA003CA9F6}"=""
+
+;Context Menu - Disable Pin To Start entry
+"{470C0EBD-5D73-4d58-9CED-E91E22E23282}"=""
+
+;Context Menu - Disable Share entry
+"{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}"=""
+
+;Context Menu - Disable Pin To Taskbar entry
+[-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\{90AA3A4E-1CBA-4233-B8BB-535773D48449}]
+
+;Context Menu - Remove Pin to Quick Access entry
+[-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
+
+;Context Menu - Remove Pin to Start Menu entry
+[HKEY_CLASSES_ROOT\Launcher.AllAppsDesktopApplication\shellex\ContextMenuHandlers\PintoStartScreen]
+@="{470C0EBD-5D73-4d58-9CED-E91E22E23282}"
+
+;Context Menu - Remove Troubleshoot Compatibility context menu entry
+[-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\Compatibility]
+[-HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\Compatibility]
+
+;Context Menu - Remove Include In Library entry
+[-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\Library Location]
+
+;Disable Malicious Software Removal Tool
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+"DontOfferThroughWUAU"=dword:00000001
+
+;Crash Control - Don't reboot after a crash
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+"AutoReboot"=dword:00000000
+
+;Crash Control - Show BSOD details instead of the sad smiley
+"DisplayParameters"=dword:00000001
+
+;Action Center - Disable Quick Action tiles
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Shell\ActionCenter\Quick Actions]
+"PinnedQuickActionSlotCount"=dword:00000000
+
+;Apps - Disable automatic App updates
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"AutoDownload"=dword:00000000
+
+;Apps - Disable 'Let Apps run in the background'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
+"GlobalUserDisabled"=dword:00000001
+
+;Disable Windows Error Reporting
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+;============ Explorer  ===========
+;Remove Explorer entry for 3D Objects (old method)
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+;Remove Explorer entry for Music (old method)
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}]
+;Remove Explorer entry for Downloads (old method)
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088E3905-0323-4B02-9826-5D99428E115F}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088E3905-0323-4B02-9826-5D99428E115F}]
+;Remove Explorer entry for Pictures old method)
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24AD3AD4-A569-4530-98E1-AB02F9417AA8}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24AD3AD4-A569-4530-98E1-AB02F9417AA8}]
+;Remove Explorer entry for Videos (old method)
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}]
+;Remove Explorer entry for Documents (old method)
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D3162B92-9365-467A-956B-92703ACA08AF}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D3162B92-9365-467A-956B-92703ACA08AF}]
+
+;============ Start Menu ===========
+;Don't hide recently opened Programs from the Start menu /Start Run
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+;"Start_TrackProgs"=dword:00000001
+;Don't hide recently opened Documents from the Start menu /Start Run
+;"Start_TrackDocs"=dword:00000001
+;Don't add a Games shortcut to the start menu
+;"Start_ShowMyGames"=dword:00000000
+;Don't slow down search by including all public folders
+;"Start_SearchFiles"=dword:00000001
+
+;============ Personalization ===========
+;Allow changing Windows Color
+;"NoDispAppearancePage"=dword:00000000
+;Allow Color scheme changes
+;"NoColorChoice"=dword:00000000
+;Allow changing the font size
+;"NoSizeChoice"=dword:00000000
+;Allow changing the Screen Saver
+;"NoDispScrSavPage"=dword:00000000
+;Allow changing the Display
+;"NoDispCPL"=dword:00000000
+;Allow changing the Display Settings
+;"NoDispSettingsPage"=dword:00000000
+;Don't hide the Themes tab in Control Panel Personalisation
+;[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+;"NoThemesTab"=dword:00000000
+
+;============ Control Panel / Add-Remove Programs ===========
+;Don't hide any Control Panel applets see Q207750
+;[HKEY_CURRENT_USER\Control Panel\don't load]
+;"appwiz.cpl"=-
+;These keys make sure you can install or uninstall programs:
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Programs]
+;"NoProgramsAndFeatures"=-
+;"NoProgramsCPL"=-
+
+;============ Windows Update ===========
+;These affect all users [HKLM] and would typically be set via Group Policy
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
+;Download and install
+;"AUOptions"=dword:00000004
+;Download but don't install 
+;"AUOptions"=dword:00000003
+;Check but don't download 
+;"AUOptions"=dword:00000002
+;Don't check
+;"AUOptions"=dword:00000001
+;Disable P2P uploads/downloads (Windows Update>Advanced>Choose how updates are delivered)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config]
+;"DODownloadMode"=dword:00000000
+
+;============ Miscellaneous ===========
+;Set the Screen Saver grace period (this only works if a valid screensaver is set)
+;an alternative is adjusting the power / hibernate settings for the display.
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+;"ScreenSaverGracePeriod"="10"
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent]
+;Get a L2TP/IPsec VPN working (Synology)
+;"AssumeUDPEncapsulationContextOnSendRule"=dword:00000002
+;Don't tie new shortcuts to a specific PC
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+;"LinkResolveIgnoreLinkInfo"=dword:00000001
+;Don't use Windows NTFS link tracking to resolve existing shortcuts.
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+;"NoResolveTrack"=dword:00000001
+;Enable old UAC prompt (doesn't work anymore)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\TestHooks]
+;"XamlCredUIAvailable"=dword:00000000
