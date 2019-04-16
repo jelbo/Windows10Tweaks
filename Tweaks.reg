@@ -381,3 +381,14 @@ Windows Registry Editor Version 5.00
 ;Windows Update - Set the number of days before a pending restart for Feature Updates will automatically be executed outside of Active Hours to 30 (maximum)
 "AutoRestartDeadlinePeriodInDaysForFeatureUpdates"=dword:0000001e
 
+;Windows Update - Defer Upgrades/Updates
+"DeferUpgrade"=dword:00000001
+
+;Windows Update - Defer Upgrades 8 months (maximum)
+"DeferUpgradePeriod"=dword:00000008
+
+;Windows Update - Defer Updates 4 weeks (maximum)
+"DeferUpdatePeriod"=dword:00000004
+
+;Windows Update - Disable Pausing Updates
+"PauseDeferrals"=dword:00000000
