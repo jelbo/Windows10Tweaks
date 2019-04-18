@@ -386,6 +386,10 @@ Windows Registry Editor Version 5.00
 ;Windows Update - Disable Pausing Updates
 "PauseDeferrals"=dword:00000000
 
-;Disable Automatic Maintenance
+;Automatic Maintenance - Disable 
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
 ;"MaintenanceDisabled"=dword:00000000
+
+;Automatic Maintenance - Disable to wake up computer
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Task Scheduler\Maintenance]
+"WakeUp"=dword:00000000
