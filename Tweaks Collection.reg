@@ -337,6 +337,12 @@ Windows Registry Editor Version 5.00
 [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\Library Location]
 ;Find GUID so I can block it instead
 
+;Context Menu - Remove 'Create a new video' entry
+[HKEY_CLASSES_ROOT\AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\Shell\ShellCreateVideo]
+"ProgrammaticAccessOnly"=""
+[HKEY_CLASSES_ROOT\AppXk0g4vb8gvt7b93tg50ybcy892pge6jmt\Shell\ShellCreateVideo]
+"ProgrammaticAccessOnly"=""
+
 ;Disable Malicious Software Removal Tool
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
 "DontOfferThroughWUAU"=dword:00000001
