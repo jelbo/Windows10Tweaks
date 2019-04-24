@@ -1,0 +1,30 @@
+Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\exefile\shell\Allow through Windows Firewall]
+;"Icon"="C:\\Program Files\\Windows Firewall Control\\wfc.exe,0"
+;[-HKEY_CLASSES_ROOT\exefile\shell\Allow through Windows Firewall\command]
+;@="C:\\Program Files\\Windows Firewall Control\\wfc.exe -allow \"%1\""
+[-HKEY_CLASSES_ROOT\exefile\shell\Block through Windows Firewall]
+;"Icon"="C:\\Program Files\\Windows Firewall Control\\wfc.exe,0"
+;[-HKEY_CLASSES_ROOT\exefile\shell\Block through Windows Firewall\command]
+;@="C:\\Program Files\\Windows Firewall Control\\wfc.exe -block \"%1\""
+
+[HKEY_CLASSES_ROOT\exefile\shell\Windows Firewall Control]
+"SubCommands"=""
+"Position"="Middle"
+"MUIVerb"="&Windows Firewall Control"
+"Icon"="C:\\Program Files\\Windows Firewall Control\\wfc.exe,0"
+
+[HKEY_CLASSES_ROOT\exefile\shell\Windows Firewall Control\shell]
+
+[HKEY_CLASSES_ROOT\exefile\shell\Windows Firewall Control\shell\Allow through Windows Firewall]
+"Icon"="C:\\Program Files\\Windows Firewall Control\\wfc.exe,0"
+
+[HKEY_CLASSES_ROOT\exefile\shell\Windows Firewall Control\shell\Allow through Windows Firewall\command]
+@="C:\\Program Files\\Windows Firewall Control\\wfc.exe -allow \"%1\""
+
+[HKEY_CLASSES_ROOT\exefile\shell\Windows Firewall Control\shell\Block through Windows Firewall]
+"Icon"="C:\\Program Files\\Windows Firewall Control\\wfc.exe,0"
+
+[HKEY_CLASSES_ROOT\exefile\shell\Windows Firewall Control\shell\Block through Windows Firewall\command]
+@="C:\\Program Files\\Windows Firewall Control\\wfc.exe -block \"%1\""
