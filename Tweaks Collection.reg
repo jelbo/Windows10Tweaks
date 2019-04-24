@@ -399,3 +399,7 @@ Windows Registry Editor Version 5.00
 ;Automatic Maintenance - Disable to wake up computer
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Task Scheduler\Maintenance]
 "WakeUp"=dword:00000000
+
+;Disable CompatTelRunner.exe using a debugger redirect on the .exe
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe]
+"debugger"="rundll32.exe"
