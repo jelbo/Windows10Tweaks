@@ -387,14 +387,14 @@ Windows Registry Editor Version 5.00
 "DeferUpgradePeriod"=dword:00000008
 
 ;Windows Update - Defer Updates 4 weeks (maximum)
-"DeferUpdatePeriod"=dword:00000004
+;"DeferUpdatePeriod"=dword:00000004
 
 ;Windows Update - Disable Pausing Updates
-"PauseDeferrals"=dword:00000000
+;"PauseDeferrals"=dword:00000000
 
 ;Automatic Maintenance - Disable 
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
-;"MaintenanceDisabled"=dword:00000000
+;"MaintenanceDisabled"=dword:00000001
 
 ;Automatic Maintenance - Disable to wake up computer
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Task Scheduler\Maintenance]
