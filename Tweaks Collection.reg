@@ -123,6 +123,9 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Enable animations
 "TaskbarAnimations"=dword:00000001
 
+;Taskbar - Disable previews (actually: show after 1.5 minute)
+"ExtendedUIHoverTime"=dword:00090000
+
 ;Taskbar - Show all icons in the System Tray
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "EnableAutoTray"=dword:00000000
