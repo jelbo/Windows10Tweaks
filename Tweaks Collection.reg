@@ -169,6 +169,8 @@ Windows Registry Editor Version 5.00
 ;Start Menu - Disable suggestions
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SystemPaneSuggestionsEnabled"=dword:00000000
+"SilentInstalledAppsEnabled"=dword:00000000
+"ContentDeliveryAllowed"=dword:00000000
 
 ;Start Menu - Disable Live Tiles
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
