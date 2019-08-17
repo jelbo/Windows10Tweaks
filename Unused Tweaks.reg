@@ -19,6 +19,25 @@ Windows Registry Editor Version 5.00
 ;Remove Explorer entry for Documents (old method)
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D3162B92-9365-467A-956B-92703ACA08AF}]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D3162B92-9365-467A-956B-92703ACA08AF}]
+;Explorer - Enable Shift context menu 'Open command window here'
+[HKEY_CLASSES_ROOT\Directory\Background\shell\cmdhere]
+@="@shell32.dll,-8506"
+"Extended"=""
+"NoWorkingDirectory"=""
+[HKEY_CLASSES_ROOT\Directory\Background\shell\cmdhere\command]
+@="cmd.exe /s /k pushd \"%V\""
+[HKEY_CLASSES_ROOT\Directory\shell\cmdhere]
+@="@shell32.dll,-8506"
+"Extended"=""
+"NoWorkingDirectory"=""
+[HKEY_CLASSES_ROOT\Directory\shell\cmdhere\command]
+@="cmd.exe /s /k pushd \"%V\""
+[HKEY_CLASSES_ROOT\Drive\shell\cmdhere]
+@="@shell32.dll,-8506"
+"Extended"=""
+"NoWorkingDirectory"=""
+[HKEY_CLASSES_ROOT\Drive\shell\cmdhere\command]
+@="cmd.exe /s /k pushd \"%V\""
 
 ;============ Start Menu ===========
 ;Don't hide recently opened Programs from the Start menu /Start Run
