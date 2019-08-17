@@ -46,31 +46,6 @@ Windows Registry Editor Version 5.00
 ;Explorer - Enable Server Admin UI (?)
 "ServerAdminUI"=dword:00000001
 
-;Explorer - Enable Shift context menu 'Open command window here'
-[HKEY_CLASSES_ROOT\Directory\Background\shell\cmdhere]
-@="@shell32.dll,-8506"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\cmdhere\command]
-@="cmd.exe /s /k pushd \"%V\""
-
-[HKEY_CLASSES_ROOT\Directory\shell\cmdhere]
-@="@shell32.dll,-8506"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Directory\shell\cmdhere\command]
-@="cmd.exe /s /k pushd \"%V\""
-
-[HKEY_CLASSES_ROOT\Drive\shell\cmdhere]
-@="@shell32.dll,-8506"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Drive\shell\cmdhere\command]
-@="cmd.exe /s /k pushd \"%V\""
-
 ;Navigation Pane - Show all folders in Explorer including Recycle Bin, Desktop, Control Panel
 "NavPaneShowAllFolders"=dword:00000001
 
@@ -331,10 +306,6 @@ Windows Registry Editor Version 5.00
 ;Disable Aero Snap
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "WindowArrangementActive"=dword:00000000
-
-;Add-run-with-powershell-as-administrator (NEED TESTING)
-[HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\RunAs\Command]
-@="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \"%1\""
 
 ;Context Menu - Disable 'Restore Previous Versions' entry
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
