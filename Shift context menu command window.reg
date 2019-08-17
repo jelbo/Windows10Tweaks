@@ -1,0 +1,132 @@
+Windows Registry Editor Version 5.00
+
+; Author: Hajo Schulz (hos@ct.de)
+;
+; Translated to English by jelbo
+;
+; Version 1.1 13.6.2019
+[HKEY_CURRENT_USER\Software\Classes\Directory]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background\shell]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background\shell\cmd]
+@="Open command window here"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:00000000
+"Icon"="cmd.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background\shell\cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background\shell\RunAs]
+@="Open command window here (Administrator)"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:00000000
+"Icon"="cmd.exe"
+"HasLUAShield"=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background\shell\RunAs\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background\shell\PowerShell]
+@="Open PowerShell window here"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:00000000
+"Icon"="powershell.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\background\shell\PowerShell\command]
+@="powershell.exe -noexit -command Set-Location -LiteralPath $(if('%V'.Contains(' ')) {'\"%V\"'} else {'%V'})"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\PowerShellAsAdmin]
+@="Open PowerShell window here (Administrator)"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:00000000
+"Icon"="powershell.exe"
+"HasLUAShield"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\PowerShellAsAdmin\command]
+@="powershell.exe -command \"Start-Process powershell -Verb RunAs -ArgumentList '-noexit','-command','Set-Location','-LiteralPath',\\\"`$(if('%V'.Contains(' ')) {'`\\\"%V`\\\"'} else {'%V'})\\\"\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\shell]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\shell\cmd]
+@="Open command window here"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="cmd.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\shell\cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\shell\RunAs]
+@="Open command window here (Administrator)"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="cmd.exe"
+"HasLUAShield"=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\shell\RunAs\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\shell\Powershell]
+@="Open PowerShell window here"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="powershell.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Directory\shell\Powershell\command]
+@="powershell.exe -noexit -command Set-Location -LiteralPath '\"%V\"'"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\PowerShellAsAdmin]
+@="Open PowerShell window here (Administrator)"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="powershell.exe"
+"HasLUAShield"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\PowerShellAsAdmin\command]
+@="powershell.exe -command \"Start-Process powershell -Verb RunAs -ArgumentList '-noexit','-command','Set-Location','-LiteralPath',\\\"'`\\\"%V`\\\"'\\\"\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive\shell]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive\shell\cmd]
+@="Open command window here"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="cmd.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive\shell\cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive\shell\RunAs]
+@="Open command window here (Administrator)"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="cmd.exe"
+"HasLUAShield"=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive\shell\RunAs\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive\shell\Powershell]
+@="Open PowerShell window here"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="powershell.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Drive\shell\Powershell\command]
+@="powershell.exe -noexit -command Set-Location -LiteralPath '%V'"
+
+[HKEY_CURRENT_USER\Software\Classes\Drive\shell\PowerShellAsAdmin]
+@="Open PowerShell window here (Administrator)"
+"Extended"=""
+"HideBasedOnVelocityId"=dword:0
+"Icon"="powershell.exe"
+"HasLUAShield"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Drive\shell\PowerShellAsAdmin\command]
+@="powershell.exe -command \"Start-Process powershell -Verb RunAs -ArgumentList '-noexit','-command','Set-Location','-LiteralPath',\\\"'%V'\\\"\""
