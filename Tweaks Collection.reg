@@ -11,6 +11,14 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "NoSaveSettings"=dword:00000000
 
+;Explorer - Disable "Consumer Features" (aka downloading apps from the internet automatically)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsConsumerFeatures"=dword:00000001
+
+;Explorer - Disable the "how to use Windows" contextual popups
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableSoftLanding"=dword:00000001
+
 ;Explorer - Ribbon always maximized
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "ExplorerRibbonStartsMinimized"=dword:00000004
