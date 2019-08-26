@@ -11,10 +11,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "NoSaveSettings"=dword:00000000
 
-;Explorer - Disable "Consumer Features" (aka downloading apps from the internet automatically)
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsConsumerFeatures"=dword:00000001
-
 ;Explorer - Disable the "how to use Windows" contextual popups
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableSoftLanding"=dword:00000001
@@ -266,12 +262,20 @@ Windows Registry Editor Version 5.00
 ;Mouse - Disable 'Enhance pointer precision' on login screen
 "MouseSpeed"="0"
 
+;Download Mode: WSUS only
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config]
+"DODownloadMode"=dword:00000000
+
 ;Don't add "- Shortcut" text to the name of newly created shortcuts
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "link"=hex:00,00,00,00
 
 ;Don't prompt to 'Look for an app in the Store'
 "NoUseStoreOpenWith"=dword:00000001
+
+;Disable "Consumer Features" (aka downloading apps from the internet automatically)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsConsumerFeatures"=dword:00000001
 
 ;Display verbose messages during login 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
