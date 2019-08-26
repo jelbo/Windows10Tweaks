@@ -284,9 +284,12 @@ Windows Registry Editor Version 5.00
 ;Forces symbolic links to be written to both linked logon sessions that are created, when UAC is enabled
 "EnableLinkedConnections"=dword:00000001
 
-;Disable Cortana
+;Windows Search - Disable Cortana
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 "AllowCortana"=dword:00000000
+
+;Windows Search - Disable Web Search
+"ConnectedSearchUseWeb"=dword:00000000
 
 ;Disable 'You have new apps that can open this type of file'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
