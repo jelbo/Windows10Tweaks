@@ -291,6 +291,9 @@ Windows Registry Editor Version 5.00
 ;Windows Search - Disable Web Search
 "ConnectedSearchUseWeb"=dword:00000000
 
+;Windows Search - Disable Location
+"AllowSearchToUseLocation"=dword:00000000
+
 ;Disable 'You have new apps that can open this type of file'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "NoNewAppAlert"=dword:00000001
