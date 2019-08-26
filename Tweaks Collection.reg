@@ -262,7 +262,7 @@ Windows Registry Editor Version 5.00
 ;Mouse - Disable 'Enhance pointer precision' on login screen
 "MouseSpeed"="0"
 
-;Download Mode: WSUS only
+;Download Mode: WSUS only (aka disable PeerCaching)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config]
 "DODownloadMode"=dword:00000000
 
