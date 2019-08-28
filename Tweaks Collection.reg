@@ -270,10 +270,10 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "link"=hex:00,00,00,00
 
-;Don't prompt to 'Look for an app in the Store'
+;Apps - Don't prompt to 'Look for an app in the Store'
 "NoUseStoreOpenWith"=dword:00000001
 
-;Disable "Consumer Features" (aka downloading apps from the internet automatically)
+;Apps - Disable "Consumer Features" (aka automatically downloading sponsored apps)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsConsumerFeatures"=dword:00000001
 
