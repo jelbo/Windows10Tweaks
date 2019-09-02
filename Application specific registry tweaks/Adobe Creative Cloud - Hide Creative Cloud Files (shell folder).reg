@@ -12,3 +12,5 @@ Windows Registry Editor Version 5.00
 @="Creative Cloud Files"
 "System.IsPinnedToNameSpaceTree"=dword:00000000
 "SortOrderIndex"=dword:00000042"
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{0E270DAA-1BE6-48F2-AC49-8B7440BCAABB}]
