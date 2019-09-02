@@ -1,16 +1,17 @@
 Windows Registry Editor Version 5.00
 
+;Navigation Pane - Hide Creative Cloud Files (Shell Folder)
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{0E270DAA-1BE6-48F2-AC49-F9AC26CEF1D5}]
+
 ;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (official way) (doesn't work)
-[HKEY_CURRENT_USER\Software\Policies\Adobe\CreativeCloud]
-"unPinCCF"=dword:00000001
+;[HKEY_CURRENT_USER\Software\Policies\Adobe\CreativeCloud]
+;"unPinCCF"=dword:00000001
 
 ;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (dirty way) (doesn't work)
-[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-FCA69971F5C4}]
-"System.IsPinnedToNameSpaceTree"=dword:00000000
+;[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-FCA69971F5C4}]
+;"System.IsPinnedToNameSpaceTree"=dword:00000000
 
-[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-5FBE58E0E339}]
-@="Creative Cloud Files"
-"System.IsPinnedToNameSpaceTree"=dword:00000000
-"SortOrderIndex"=dword:00000042"
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{0E270DAA-1BE6-48F2-AC49-8B7440BCAABB}]
+;[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-5FBE58E0E339}]
+;@="Creative Cloud Files"
+;"System.IsPinnedToNameSpaceTree"=dword:00000000
+;"SortOrderIndex"=dword:00000042"
