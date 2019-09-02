@@ -7,3 +7,8 @@ Windows Registry Editor Version 5.00
 ;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (dirty way) (doesn't work)
 [HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-FCA69971F5C4}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
+
+[HKEY_CLASSES_ROOT\CLSID\{0E270DAA-1BE6-48F2-AC49-5FBE58E0E339}]
+@="Creative Cloud Files"
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+"SortOrderIndex"=dword:00000042"
