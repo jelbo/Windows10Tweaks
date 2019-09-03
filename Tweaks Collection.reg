@@ -413,7 +413,7 @@ Windows Registry Editor Version 5.00
 ;=================================
 ;Immediately focus new application windows
 [HKEY_CURRENT_USER\Control Panel\Desktop]
-"ForegroundLockTimeout"="0"
+"ForegroundLockTimeout"=dword:00000000
 
 ;Auto end tasks at log off or shut down
 "AutoEndTasks"="1"
