@@ -392,6 +392,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe]
 "debugger"="rundll32.exe"
 
+;Disable NTFS Last Access timestamps (System Managed, Last Access Updates Disabled)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
+"NtfsDisableLastAccessUpdate"=dword:80000003
+
 ;============== HKUD =============
 ;=================================
 ;Mouse - MarkC Mouse Acceleration Fix: disable mouse acceleration on login screen
@@ -404,8 +408,14 @@ Windows Registry Editor Version 5.00
 
 ;============== HKCU =============
 ;=================================
-;Mouse - Disable Menu Show Delay
+;Immediately focus new application windows
 [HKEY_CURRENT_USER\Control Panel\Desktop]
+"ForegroundLockTimeout"="0"
+
+;Auto end tasks at log off or shut down
+"AutoEndTasks"="1"
+
+;Mouse - Disable Menu Show Delay
 "MenuShowDelay"="0"
 
 ;Mouse - Disable Mouse Hover Delay
