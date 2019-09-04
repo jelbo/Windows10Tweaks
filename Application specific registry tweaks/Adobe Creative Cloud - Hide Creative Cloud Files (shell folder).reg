@@ -1,7 +1,8 @@
 Windows Registry Editor Version 5.00
 
 ;Navigation Pane - Hide Creative Cloud Files (Shell Folder)
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{0E270DAA-1BE6-48F2-AC49-F9AC26CEF1D5}]
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{0E270DAA-1BE6-48F2-AC49-FCA69971F5C4}]
+;[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{0E270DAA-1BE6-48F2-AC49-F9AC26CEF1D5}]
 
 ;Navigation Pane - Hide Creative Cloud Files (Shell Folder) (official way) (doesn't work)
 ;[HKEY_CURRENT_USER\Software\Policies\Adobe\CreativeCloud]
