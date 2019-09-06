@@ -199,6 +199,7 @@ Windows Registry Editor Version 5.00
 "VisualFXSetting"=dword:00000003
 
 ;Visual Effects - Adjust to the following options:
+;Needs VisualFXSetting on 3
 ;  (A) Smooth-scroll list boxes            1
 ;  (B) Slide open combo boxes              1
 ;  (C) Fade or slide menus into view       0
@@ -214,6 +215,15 @@ Windows Registry Editor Version 5.00
 ;  9C       32       07
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "UserPreferencesMask"=hex:9C,32,07,80,12,00,00,00
+
+;Visual Effects - Enable show window contents while dragging
+"DragFullWindows"="1"
+
+;Visual Effects - Enable smooth edges of screen fonts
+"FontSmoothing"="2"
+
+;Visual Effects - Enable show icon drop shadows
+"ListviewShadow"=dword:00000001
 
 ;Visual Effects - Disable animation when minimizing and maximizing
 [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
@@ -233,15 +243,7 @@ Windows Registry Editor Version 5.00
 ;Visual Effects - Enable translucent selection rectangle
 "ListviewAlphaSelect"=dword:00000001
 
-;Visual Effects - Enable show window contents while dragging
-[HKEY_CURRENT_USER\Control Panel\Desktop]
-"DragFullWindows"="1"
 
-;Visual Effects - Enable smooth edges of screen fonts
-"FontSmoothing"="2"
-
-;Visual Effects - Enable show icon drop shadows
-"ListviewShadow"=dword:00000001
 
 ;Enable colored title bars
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\DWM]
@@ -467,6 +469,9 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "ForegroundLockTimeout"=dword:00000000
 
+;Disable Aero Snap
+"WindowArrangementActive"=dword:00000000
+
 ;Auto end tasks at log off or shut down
 "AutoEndTasks"="1"
 
@@ -518,9 +523,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
-;Disable Aero Snap
-[HKEY_CURRENT_USER\Control Panel\Desktop]
-"WindowArrangementActive"=dword:00000000
 
 ;Apps - Disable 'Let Apps run in the background'
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
