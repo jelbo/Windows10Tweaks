@@ -350,13 +350,13 @@ Windows Registry Editor Version 5.00
 ;Disable "Get tips, tricks and suggestions as you use Windows"
 "SoftLandingEnabled"=dword:00000000
 ;Disable 'Get fun facts, tips and more from Windows and Cortana on your lock screen'
-SubscribedContent-338387Enabled"=dword:00000000
+"SubscribedContent-338387Enabled"=dword:00000000
 ;Disable 'Occasionally show suggestions in Start'
 "SubscribedContent-338388Enabled"=dword:00000000
 ;Disable 'Get tips, tricks, and suggestions as you use Windows'
-SubscribedContent-338389Enabled"=dword:00000000
+"SubscribedContent-338389Enabled"=dword:00000000
 ;Disable 'Show me suggested content in the Settings app'
-SubscribedContent-353696Enabled"=dword:00000000
+"SubscribedContent-353696Enabled"=dword:00000000
 
 
 ;Start Menu - Disable Live Tiles
