@@ -198,6 +198,23 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
 "VisualFXSetting"=dword:00000003
 
+;Visual Effects - Adjust to the following options:
+;  (A) Smooth-scroll list boxes            1
+;  (B) Slide open combo boxes              1
+;  (C) Fade or slide menus into view       0
+;  (D) Show shadows under mouse pointer    1
+;  (E) Fade or slide ToolTips into view    0
+;  (F) Fade out menu items after clicking  0
+;  (G) Show shadows under windows          1
+;
+;  1001ABC0 00D1EF10 00000G11
+;      110    1 00        1
+;  00001100 00110010 00000111
+;  12       50       07
+;  9C       32       07
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"UserPreferencesMask"=hex:9C,32,07,80,12,00,00,00
+
 ;Visual Effects - Disable animation when minimizing and maximizing
 [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
 "MinAnimate"="0"
