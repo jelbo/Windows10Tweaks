@@ -39,6 +39,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsConsumerFeatures"=dword:00000001
 
+;Disable .. stuff
+"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
+"DisableThirdPartySuggestions"=dword:00000001
+"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
+
 ;Disable 'Windows Tips' ('How to use Windows' contextual popups)
 "DisableSoftLanding"=dword:00000001
 
