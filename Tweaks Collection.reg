@@ -358,7 +358,6 @@ Windows Registry Editor Version 5.00
 ;Disable 'Show me suggested content in the Settings app'
 "SubscribedContent-353696Enabled"=dword:00000000
 
-
 ;Start Menu - Disable Live Tiles
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
 "NoTileApplicationNotification"=dword:00000001
