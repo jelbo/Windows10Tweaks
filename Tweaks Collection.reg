@@ -51,7 +51,7 @@ Windows Registry Editor Version 5.00
 "VerboseStatus"=dword:00000001
 
 ;Login - Disable the Windows 10 First Logon animation
-"EnableFirstLogonAnimation"=dword:00000001
+"EnableFirstLogonAnimation"=dword:00000000
 
 ;Forces symbolic links to be written to both linked logon sessions that are created, when UAC is enabled
 "EnableLinkedConnections"=dword:00000001
