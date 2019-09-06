@@ -346,6 +346,7 @@ Windows Registry Editor Version 5.00
 "SilentInstalledAppsEnabled"=dword:00000000
 "ContentDeliveryAllowed"=dword:00000000
 "SubscribedContentEnabled"=dword:00000000
+"PreInstalledAppsEnabled"=dword:00000000
 ;Disable "Get tips, tricks and suggestions as you use Windows"
 "SoftLandingEnabled"=dword:00000000
 ;Disable 'Get fun facts, tips and more from Windows and Cortana on your lock screen'
@@ -356,6 +357,7 @@ SubscribedContent-338387Enabled"=dword:00000000
 SubscribedContent-338389Enabled"=dword:00000000
 ;Disable 'Show me suggested content in the Settings app'
 SubscribedContent-353696Enabled"=dword:00000000
+
 
 ;Start Menu - Disable Live Tiles
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
