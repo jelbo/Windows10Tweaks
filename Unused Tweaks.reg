@@ -108,3 +108,5 @@ Windows Registry Editor Version 5.00
 ;Enable old UAC prompt (doesn't work anymore)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\TestHooks]
 "XamlCredUIAvailable"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework]
+"OnlyUseLatestCLR"=dword:00000001
