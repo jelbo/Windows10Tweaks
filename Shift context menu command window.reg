@@ -1,9 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ; Author: Hajo Schulz (hos@ct.de)
-;
 ; Translated to English by jelbo
-;
 ; Version 1.1 13.6.2019
 [HKEY_CURRENT_USER\Software\Classes\Directory]
 
