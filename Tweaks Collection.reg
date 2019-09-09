@@ -1,5 +1,17 @@
 Windows Registry Editor Version 5.00
 
+; Possible locations for a single setting:
+;
+; HKEY_LOCAL_MACHINE (Policies; dictate Settings, but not every Setting has a Policy)
+; HKEY_LOCAL_MACHINE (Settings)
+; HKEY_CURRENT_USER (Policies; dictate Settings, but not every Setting has a Policy)
+; HKEY_CURRENT_USER (Settings)
+;
+; Other locations
+;
+; HKEY_USERS\.DEFAULT (SYSTEM account; logon screen)
+; HKEY_CLASSES_ROOT
+
 ;=================================
 ;============== HKLM =============
 ;=================================
@@ -10,6 +22,8 @@ Windows Registry Editor Version 5.00
 ;Navigation Pane - Hide OneDrive (Shell Folder)
 [HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
+
+;Hide OneDrive icon from 'Browser' dialog box (Open, Save, Save As)
 [HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
 
@@ -39,6 +53,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsConsumerFeatures"=dword:00000001
 
+;Disable Windows Spotlight features
+"DisableWindowsSpotlightFeatures"=dword:00000001
+
 ;Disable .. stuff
 "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
 "DisableThirdPartySuggestions"=dword:00000001
@@ -60,6 +77,10 @@ Windows Registry Editor Version 5.00
 
 ;Forces symbolic links to be written to both linked logon sessions that are created, when UAC is enabled
 "EnableLinkedConnections"=dword:00000001
+
+;Disables the customization wizard upon first launch of Internet Explorer
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
+"DisableFirstRunCustomize"=dword:00000001
 
 ;Windows Search - Disable Cortana
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
@@ -132,12 +153,20 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
 "DontOfferThroughWUAU"=dword:00000001
 
+;Increase Service Startup Timeout to 120 seconds
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control]
+"ServicesPipeTimeout"=dword:00120000
+
 ;Crash Control - Don't reboot after a crash
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
 "AutoReboot"=dword:00000000
 
 ;Crash Control - Show BSOD details instead of the sad smiley
 "DisplayParameters"=dword:00000001
+
+;Disable Find My Device
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
+"LocationSyncEnabled"=dword:00000000
 
 ;Action Center - Disable Quick Action tiles
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Shell\ActionCenter\Quick Actions]
@@ -146,6 +175,10 @@ Windows Registry Editor Version 5.00
 ;Disable Windows Error Reporting
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
 "Disabled"=dword:00000001
+
+;Disable 'Send Settings To Cloud'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableSettingSync"=dword:00000002
 
 ;Windows Update - Enable postponing automatic restarts for updates
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
@@ -180,6 +213,10 @@ Windows Registry Editor Version 5.00
 ;Disable CompatTelRunner.exe using a debugger redirect on the .exe
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe]
 "debugger"="rundll32.exe"
+
+;Disk Timeout Value to 60 (VDI)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Disk]
+"TimeOutValue"=dword:00000060
 
 ;Disable NTFS Last Access timestamps (System Managed, Last Access Updates Disabled)
 ;Better way could be fsutil behavior set disablelastaccess 3 (system managed) or 1 (user managed)
@@ -298,13 +335,20 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Disable grouping taskbar buttons
 "NoTaskGrouping"=dword:00000001
 
+;Taskbar - Show all icons in the System Tray
+"EnableAutoTray"=dword:00000000
+
+;Taskbar - Disable Edge shortcut creation
+"DisableEdgeDesktopShortcutCreation"=dword:00000001
+
 ;Taskbar - Hide Search Bar
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
 "SearchboxTaskbarMode"=dword:00000000
 
 ;Taskbar - Hide People Bar
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "HidePeopleBar"=dword:00000001
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
+"PeopleBand"=dword:00000000
 
 ;Taskbar - Hide Task View button
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -325,13 +369,9 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Disable previews (actually: show after 1.5 minute)
 "ExtendedUIHoverTime"=dword:00090000
 
-;Taskbar - Show all icons in the System Tray
-;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer]
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
-"EnableAutoTray"=dword:00000000
-
-;Desktop - Disable Edge shortcut creation
-"DisableEdgeDesktopShortcutCreation"=dword:00000001
+;Taskbar - Hide Windows Ink Workspace button
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace]
+"PenWorkspaceButtonDesiredVisibility"=dword:00000000
 
 ;Taskbar - Disable web search
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
@@ -367,6 +407,13 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
 "NoTileApplicationNotification"=dword:00000001
 
+;Start Menu - Disable 'Show most used apps' (VDI)
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000000
+
+;Start Menu - Disable 'Show recently opened items in Jump Lists on Start or the taskbar' (VDI)
+"Start_TrackDocs"=dword:00000000
+
 ;======== Personalization ========
 ;=================================
 
@@ -376,19 +423,19 @@ Windows Registry Editor Version 5.00
 
 ;Visual Effects - Adjust to the following options:
 ;Needs VisualFXSetting on 3
-;  (A) Smooth-scroll list boxes            1
-;  (B) Slide open combo boxes              1
-;  (C) Fade or slide menus into view       0
-;  (D) Show shadows under mouse pointer    1
-;  (E) Fade or slide ToolTips into view    0
-;  (F) Fade out menu items after clicking  0
-;  (G) Show shadows under windows          1
+; (A) Smooth-scroll list boxes            1
+; (B) Slide open combo boxes              1
+; (C) Fade or slide menus into view       0
+; (D) Show shadows under mouse pointer    1
+; (E) Fade or slide ToolTips into view    0
+; (F) Fade out menu items after clicking  0
+; (G) Show shadows under windows          1
 ;
-;  1001ABC0 00D1EF10 00000G11
-;      110    1 00        1
-;  00001100 00110010 00000111
-;  12       50       07
-;  9C       32       07
+; 1001ABC0 00D1EF10 00000G11
+;     110    1 00        1
+; 00001100 00110010 00000111
+; 12       50       07
+; 9C       32       07
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "UserPreferencesMask"=hex:9C,32,07,80,12,00,00,00
 
@@ -401,6 +448,12 @@ Windows Registry Editor Version 5.00
 ;Visual Effects - Enable show icon drop shadows
 "ListviewShadow"=dword:00000001
 
+;Disable cursor blink (VDI)
+"DisableCursorBlink"=dword:00000001
+
+;Set cursor blink rate to none (VDI)
+"CursorBlinkRate"=dword:00000001
+
 ;Visual Effects - Disable animation when minimizing and maximizing
 [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
 "MinAnimate"="0"
@@ -412,7 +465,7 @@ Windows Registry Editor Version 5.00
 ;Visual Effects - Enable show thumbnails instead of icons
 "IconsOnly"=dword:00000000
 
-;Visual Effects - Disable saveing taskbar thumbnail previews
+;Visual Effects - Disable saving taskbar thumbnail previews
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
 "AlwaysHibernateThumbnails"=dword:00000000
 
@@ -451,6 +504,10 @@ Windows Registry Editor Version 5.00
 ;Alt-Tab - 80% dimmed desktop background 
 "BackgroundDimmingLayer_percent"=dword:00000050
 
+;Lock Screen - Disable Tile Migrate?
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lock Screen]
+"TileMigrated"=dword:00000000
+
 ;Disable wide context menus
 ;Broken since 1809
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]
@@ -466,8 +523,195 @@ Windows Registry Editor Version 5.00
 ;Themes - Prevent Windows themes from changing wallpaper
 "WallpaperSetFromTheme"=dword:00000000
 
+;Themes - Disable transparency effects (VDI)
+"EnableTransparency"=dword:00000000
+
+;Sounds - Set to None and Disable
+[HKEY_CURRENT_USER\AppEvents\Schemes]
+@=".None"
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\.Default\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\AppGPFault\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\CCSelect\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\ChangeTheme\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Close\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\CriticalBatteryAlarm\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\DeviceConnect\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\DeviceDisconnect\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\DeviceFail\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\FaxBeep\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\LowBatteryAlarm\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\MailBeep\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Maximize\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\MenuCommand\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\MenuPopup\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\MessageNudge\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Minimize\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Default\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.IM\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm10\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm2\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm3\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm4\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm5\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm6\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm7\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm8\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Alarm9\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call10\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call2\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call3\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call4\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call5\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call6\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call7\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call8\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Looping.Call9\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Mail\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Proximity\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.Reminder\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Notification.SMS\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\Open\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\PrintComplete\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\ProximityConnection\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\RestoreDown\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\RestoreUp\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\ShowBand\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SystemAsterisk\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SystemExclamation\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SystemExit\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SystemHand\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SystemNotification\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SystemQuestion\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\WindowsLogoff\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\WindowsLogon\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\WindowsUAC\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\WindowsUnlock\.Current]
+@=
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\devenv\VS_BreakpointHit\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\ActivatingDocument\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\BlockedPopup\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\EmptyRecycleBin\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\FaxError\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\FaxLineRings\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\FaxSent\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\FeedDiscovered\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\MoveMenuItem\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\Navigating\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\SearchProviderDiscovered\.Current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Explorer\SecurityBand\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\sapisvr\DisNumbersSound\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\sapisvr\HubOffSound\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\sapisvr\HubOnSound\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\sapisvr\HubSleepSound\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\sapisvr\MisrecoSound\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Ssms\VS_BuildCanceled\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Ssms\VS_BuildFailed\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Ssms\VS_BuildSucceeded\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\UCA\UCA_Chat\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\UCA\UCA_ChatPopup\.current]
+@=""
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\UCA\UCA_KMPopup\.current]
+@=""
+
 ;========= Miscellaneous =========
 ;=================================
+
+;Disable 'Feature advertisement balloon notifications'
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows]
+"NoBalloonFeatureAdvertisements"=dword:00000001
+
+;Disable File Explorer Search Box suggestions
+"DisableSearchBoxSuggestions"=dword:00000001
+
+;Disable thumbnail caching on network folders (VDI)
+"DisableThumbsDBOnNetworkFolders"=dword:00000001
+
+;Disable Windows Game Recording and Broadcasting
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_Enabled"=dword:00000000
 
 ;Immediately focus new application windows
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -508,12 +752,134 @@ Windows Registry Editor Version 5.00
 ;Mouse - Disable 'Enhance pointer precision'
 "MouseSpeed"="0"
 
+;Disable 'Let websites provide locally relevant content by accessing my language list'
+[HKEY_CURRENT_USER\Control Panel\International\User Profile]
+"HttpAcceptLanguageOptout"=dword:00000001
+
+;Apps - Disable 'Let apps use advertising ID'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000000
+
+;Purge cache for IE on every close of IE (VDI)
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
+"Persistent"=dword:00000000
+
+;Apps - Disable 'Let apps on my other devices open apps and continue experiences on this device'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass]
+"UserAuthPolicy"=dword:00000000
+
+;Apps - Disable 'Let apps use my camera'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E5323777-F976-4f5b-9B55-B94699C46E44}]
+@="Deny"
+
+;Apps - Disable 'Let apps use my microphone'
+[HKEY_CURRENT_USERSOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
+@="Deny"
+
+;Apps - Disable 'Let apps access my notifications'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{52079E78-A92B-413F-B213-E8FE35712E72}]
+@="Deny"
+
+;Apps - Disable 'Let apps access my contacts'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}]
+@="Deny"
+
+;Apps - Disable 'Let apps access my calendar'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}]
+@="Deny"
+
+;Apps - Disable 'Let apps access my call history'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}]
+@="Deny"
+
+;Apps - Disable 'Let apps access and send email'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}]
+@="Deny"
+
+;Apps - Disable 'Let apps read or send messages (text or MMS)'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{992AFA70-6F47-4148-B3E9-3003349C1548}]
+@="Deny"
+
+;Apps -Disable 'Let apps control radios'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}]
+@="Deny"
+
+;Apps - Disable 'Let your apps automatically share and sync info with wireless devices that don’t explicitly pair with your PC, tablet, or phone'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
+@="Deny"
+
+;Never let windows ask for my feedback
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+"NumberOfSIUFInPeriod"=dword:00000000
+
+;Disable 'Let Windows manage my default printer' (VDI)
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
+"LegacyDefaultPrinterMode"=dword:00000001
+
+;Do not add shares of recently opened documents to Network Locations (VDI)
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoRecentDocsNetHood"=dword:00000001
+
+;Clear the recent programs list for new users (VDI)
+"ClearRecentProgForNewUserInStartMenu"=dword:00000001
+
+;Do not display or track items in Jump Lists from remote locations (VDI)
+"NoRemoteDestinations"=dword:00000001
+
+;Turn off user tracking (VDI)
+"NoInstrumentation"=dword:00000001
+
+;Turn off caching of thumbnail pictures (VDI)
+"NoThumbnailCache"=dword:00000001
+"DisableThumbnailCache"=dword:00000001
+
+;Notifications - Turn off all balloon notifications (VDI)
+"TaskbarNoNotification"=dword:00000001
+
+;Notifications - Disable 'Get notifications from apps and other senders' (VDI)
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+"ToastEnabled"=dword:00000000
+
+;Notifications - Disable toast notifications (needs official description)
+"NoToastApplicationNotification"=dword:00000001
+
+;Notifications - Disable 'Show notifications on the lock screen'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings]
+"NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK"=dword:00000000
+
+;Notifications - Disable 'Show alarms, reminders,and incoming VoIP calls on the lock screen'
+"NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK"=dword:00000000
+
+;Notifications - Disable Security and Maintenance notifications (VDI)
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance]
+"Enabled"=dword:00000000
+
+;Active Directory searches return 5000 maximum
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Directory UI]
+"QueryLimit"=dword:00005000
+
 ;Don't add "- Shortcut" text to the name of newly created shortcuts
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "link"=hex:00,00,00,00
 
 ;Apps - Don't prompt to 'Look for an app in the Store'
 "NoUseStoreOpenWith"=dword:00000001
+
+;Disable AutoPlay
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+"DisableAutoplay"=dword:00000001
+
+;Take no action when removable drive connected
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\StorageOnArrival]
+@="MSTakeNoAction"
+
+;Take no action when memory card connected
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\CameraAlternate\ShowPicturesOnArrival]
+@="MSTakeNoAction"
+
+;Apps - Disable SmartScreen Filter for Store Apps
+[HKEY_CURRENT_USERSOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
+"EnableWebContentEvaluation"=dword:00000000
 
 ;Apps - Disable 'Let Apps run in the background'
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
@@ -523,17 +889,56 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy]
 "Disabled"=dword:00000001
 
-;Disable Aero Peek
+;'Get to know my typing'; Restrict Implicit Ink Collection
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
+"RestrictImplicitInkCollection"=dword:00000001
+
+;'Get to know my typing'; Restrict Implicit Text Collection
+"RestrictImplicitTextCollection"=dword:00000001
+
+;'Get to know my typing'; Do not scan contact informations
+"HarvestContacts"=dword:00000000
+
+;'Get to know my typing'; Disable sync language
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
+
+;'Get to know my typing'; Don't accept the Privacy Policy
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
+"AcceptedPrivacyPolicy"=dword:00000000
+
+;Disable Aero Peek #1
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
 "EnableAeroPeek"=dword:00000000
 
+;Disable Aero Peek #2 (a.k.a. Preview Desktop)
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"DisablePreviewDesktop"=dword:00000001
+
 ;Disable Aero Shake
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisallowShaking"=dword:00000001
 
 ;Don't replace Command Prompt with Windows PowerShell in the right-click start button menu or when pressing Windows key + X
 "DontUsePowerShellOnWinX"=dword:00000001
 
+;Disable Game DVR
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR]
+"AppCaptureEnabled"=dword:00000000
+
 ;Disable blocking downloaded files (Attachment Manager)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
+
+;Use desktop mode When I sign in
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell]
+"SignInMode"=dword:00000001
+
+;Disable Bing Search
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
+"BingSearchEnabled"=dword:00000000
+
+;Disable Microsoft RSS Feeds
+[HKEY_CURRENT_USER\Software\Microsoft\Feeds]
+"SyncStatus"=dword:00000000
+
+;Disable automatically tablet mode switching
+"ConvertibleSlateModePromptPreference"=dword:00000000
