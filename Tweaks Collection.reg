@@ -341,12 +341,14 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Disable Edge shortcut creation
 "DisableEdgeDesktopShortcutCreation"=dword:00000001
 
+;Taskbar - Hide People Bar #1
+"HidePeopleBar"=dword:00000001
+
 ;Taskbar - Hide Search Bar
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
 "SearchboxTaskbarMode"=dword:00000000
 
-;Taskbar - Hide People Bar
-"HidePeopleBar"=dword:00000001
+;Taskbar - Hide People Bar #2
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
 "PeopleBand"=dword:00000000
 
