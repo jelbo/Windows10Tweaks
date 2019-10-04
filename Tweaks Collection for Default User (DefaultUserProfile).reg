@@ -6,9 +6,12 @@ Windows Registry Editor Version 5.00
 ; after loading the Default User's NTUSER.DAT hive, using 'REG LOAD'.
 ; !! DO NOT IMPORT DIRECTLY !!
 
+; This method is preferred, since the 'CopyProfile' unattend.xml setting no longer works reliably.
+
 ; Full steps:
 ; REG LOAD HKLM\DefaultUserProfile C:\Users\Default\NTUSER.DAT
 ; REG IMPORT <path to this .reg file>
+; REG EXPORT HKLM\DefaultUserProfile <path to .reg file you can then check for changes> (Optional)
 ; REG UNLOAD HKLM\DefaultUserProfile
 
 ; Weird, not so obvious quirks:
