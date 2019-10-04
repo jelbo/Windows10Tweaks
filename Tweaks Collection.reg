@@ -329,7 +329,7 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Lock the taskbar
 "TaskbarSizeMove"=dword:00000000
 
-;Taskbar - Disable combining taskbar buttons (no Glomming)
+;Taskbar - Disable combining taskbar buttons #1
 "TaskbarGlomming"=dword:00000000
 
 ;Taskbar - Disable grouping taskbar buttons
@@ -344,19 +344,19 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Hide People Bar #1
 "HidePeopleBar"=dword:00000001
 
-;Taskbar - Hide Search Bar
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
-"SearchboxTaskbarMode"=dword:00000000
-
 ;Taskbar - Hide People Bar #2
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
 "PeopleBand"=dword:00000000
+
+;Taskbar - Hide Search Bar
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"SearchboxTaskbarMode"=dword:00000000
 
 ;Taskbar - Hide Task View button
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "ShowTaskViewButton"=dword:00000000
 
-;Taskbar - Disable combining taskbar buttons
+;Taskbar - Disable combining taskbar buttons #2
 "TaskbarGlomLevel"=dword:00000002
 
 ;Taskbar - Show seconds in SysTray Clock
