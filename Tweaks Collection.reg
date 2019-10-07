@@ -9,7 +9,7 @@ Windows Registry Editor Version 5.00
 ;
 ; Other locations
 ;
-; HKEY_USERS\.DEFAULT (SYSTEM account; logon screen)
+; HKEY_USERS\.DEFAULT (SYSTEM account; login screen)
 ; HKEY_CLASSES_ROOT
 
 ;=================================
@@ -724,6 +724,30 @@ Windows Registry Editor Version 5.00
 
 ;Auto end tasks at log off or shut down
 "AutoEndTasks"="1"
+
+;Keyboard - Disable Sticky Keys
+[HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
+"Flags"="506"
+
+;Keyboard - Disable Filter Keys
+[HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+"Flags"="122"
+
+;Keyboard - Disable Toggle Keys
+[HKEY_CURRENT_USER\Control Panel\Accessibility\ToggleKeys]
+"Flags"="58"
+
+;Keyboard - Disable Sticky Keys (login screen)
+[HKEY_USERS\.DEFAULT\Control Panel\Accessibility\StickyKeys]
+"Flags"="506"
+
+;Keyboard - Disable Filter Keys (login screen)
+[HKEY_USERS\.DEFAULT\Accessibility\Keyboard Response]
+"Flags"="122"
+
+;Keyboard - Disable Toggle Keys (login screen)
+[HKEY_USERS\.DEFAULT\Control Panel\Accessibility\ToggleKeys]
+"Flags"="58"
 
 ;Mouse - Disable Menu Show Delay
 "MenuShowDelay"="0"
