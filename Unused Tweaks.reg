@@ -19,25 +19,6 @@ Windows Registry Editor Version 5.00
 ;Remove Explorer entry for Documents (old method)
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D3162B92-9365-467A-956B-92703ACA08AF}]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D3162B92-9365-467A-956B-92703ACA08AF}]
-;Explorer - Enable Shift context menu 'Open command window here'
-[HKEY_CLASSES_ROOT\Directory\Background\shell\cmdhere]
-@="@shell32.dll,-8506"
-"Extended"=""
-"NoWorkingDirectory"=""
-[HKEY_CLASSES_ROOT\Directory\Background\shell\cmdhere\command]
-@="cmd.exe /s /k pushd \"%V\""
-[HKEY_CLASSES_ROOT\Directory\shell\cmdhere]
-@="@shell32.dll,-8506"
-"Extended"=""
-"NoWorkingDirectory"=""
-[HKEY_CLASSES_ROOT\Directory\shell\cmdhere\command]
-@="cmd.exe /s /k pushd \"%V\""
-[HKEY_CLASSES_ROOT\Drive\shell\cmdhere]
-@="@shell32.dll,-8506"
-"Extended"=""
-"NoWorkingDirectory"=""
-[HKEY_CLASSES_ROOT\Drive\shell\cmdhere\command]
-@="cmd.exe /s /k pushd \"%V\""
 
 ;============ Start Menu ===========
 ;Don't hide recently opened Programs from the Start menu /Start Run
@@ -110,3 +91,20 @@ Windows Registry Editor Version 5.00
 "XamlCredUIAvailable"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework]
 "OnlyUseLatestCLR"=dword:00000001
+;SMB - Disable bandwith throttling
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters]
+"DisableBandwidthThrottling"=dword:00000001
+;SMB - Enable transfers larger than approximately 64KB per request
+"DisableLargeMtu"=dword:00000000
+;SMB - Increase file metadata that is cached, from default 64 to 8000. Range is 1-65536. Can reduce network traffic and increase performance when a large number of files are accessed.
+"FileInfoCacheEntriesMax"=dword:00008000
+;SMB - Increase directory metadata that is cached, from default 16 to 1000. Range is 1-4096. Can reduce network traffic and increase performance when a large number of files are accessed.
+"DirectoryCacheEntriesMax"=dword:00001000
+;SMB - Increase filename data that is cached, from default 128 to _. Range is 1-65536. Can reduce network traffic and increase performance when a large number of file names are accessed.
+"FileNotFoundcacheEntriesMax"=dword:00000001
+;SMB - Increase the number of outstanding requests on a session, from default 15 to 8000. Range is 1-65536. Can use more memory, but can improve performance by enabling deeper request pipelining.
+"MaxCmds"=dword:00008000
+"MaxCollectionCount"
+;SMB - Increase how many threads are allowed to run at once to 255. Range is 1-255.
+"MaxThreads"=dword:00000255
+"KeepConn"
