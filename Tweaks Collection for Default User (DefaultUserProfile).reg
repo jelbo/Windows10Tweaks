@@ -765,5 +765,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Feeds]
 "SyncStatus"=dword:00000000
 
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable automatically tablet mode switching
 "ConvertibleSlateModePromptPreference"=dword:00000000
