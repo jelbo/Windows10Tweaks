@@ -521,6 +521,18 @@ Windows Registry Editor Version 5.00
 ;Mouse - Disable Menu Show Delay
 "MenuShowDelay"="0"
 
+;Keyboard - Disable Sticky Keys
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\StickyKeys]
+"Flags"="506"
+
+;Keyboard - Disable Filter Keys
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\Keyboard Response]
+"Flags"="122"
+
+;Keyboard - Disable Toggle Keys
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\ToggleKeys]
+"Flags"="58"
+
 ;Mouse - Disable Mouse Hover Delay
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Mouse]
 "MouseHoverTime"="0"
