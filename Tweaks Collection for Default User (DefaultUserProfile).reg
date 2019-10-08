@@ -20,7 +20,7 @@ Windows Registry Editor Version 5.00
 ; In this .reg file, HKEY_CURRENT_USER entries are replaced by HKEY_LOCAL_MACHINE\DefaultUserProfile (or however you loaded the hive).
 ; With REG LOAD you should use HKLM, not HKEY_LOCAL_MACHINE and there should not be a trailing backslash after the DefaultUserProfile name.
 
-; This .reg file contains adjustments from VMware's OSOT and own findings, targeting a good user experience on a VDI enviroment.
+; This .reg file contains adjustments from own findings and VMware's OSOT, targeting a good user experience on a nonpersistent VDI environment.
 
 ;============ Explorer ===========
 ;=================================
