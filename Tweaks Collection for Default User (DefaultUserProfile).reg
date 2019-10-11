@@ -31,7 +31,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Explorer]
 "ExplorerRibbonStartsMinimized"=dword:00000004
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Exporer - Disable thumbnail caching on network folders
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Explorer]
 "DisableThumbsDBOnNetworkFolders"=dword:00000001
@@ -76,7 +76,7 @@ Windows Registry Editor Version 5.00
 ;Explorer - Launch folder windows in a separate process (separate explorer.exe Shell/File Explorer)
 ;"SeparateProcess"=dword:00000001
 
-;Explorer - Hide the status bar  (if you use Classic Shell or Open Shell's status bar)
+;Explorer - Hide the status bar (if you use Classic Shell or Open Shell's status bar)
 ;"ShowStatusBar"=dword:00000000
 
 ;Explorer - Enable Server Admin UI (?)
@@ -97,22 +97,22 @@ Windows Registry Editor Version 5.00
 "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"=dword:00000001
 
 ;Navigation Pane - Hide Desktop (Shell Folder)
-"{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"=dword:00000001
+;"{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"=dword:00000001
 
 ;Navigation Pane - Hide Documents (Shell Folder)
-"{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
+;"{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
 
 ;Navigation Pane - Hide Downloads (Shell Folder)
-"{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
+;"{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
 
 ;Navigation Pane - Hide Music (Shell Folder)
-;"{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}"=dword:00000001
+"{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}"=dword:00000001
 
 ;Navigation Pane - Hide Pictures (Shell Folder)
-"{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
+;"{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
 
 ;Navigation Pane - Hide Videos (Shell Folder)
-;"{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}"=dword:00000001
+"{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}"=dword:00000001
 
 ;============ Taskbar ============
 ;=================================
@@ -166,15 +166,16 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Increase transparency
 ;"UseOLEDTaskbarTransparency"=dword:00000001
 
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU) (different)
 ;Taskbar - Disable animations
-"TaskbarAnimations"=dword:00000000
+"TaskbarAnimations"=dword:00000001
 
 ;Taskbar - Disable previews (actually: show after 1.5 minute)
 "ExtendedUIHoverTime"=dword:00090000
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in HKCU)
 ;Taskbar - Disable 'Hide app icons on the taskbar in tablet mode'
-"TaskbarAppsVisibleInTableMode"=dword:00000001
+;"TaskbarAppsVisibleInTableMode"=dword:00000001
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
 ;Taskbar - Hide Windows Ink Workspace button
@@ -288,6 +289,11 @@ Windows Registry Editor Version 5.00
 
 ;Visual Effects - Enable colored title bar: light grey for inactive
 "AccentColorInactive"=dword:ffc0c0c0
+
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;Visual Effects - disable transparency effects
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
+"EnableTransparency"=dword:00000000
 
 ;Visual Effects - NEEDS RESEARCH
 ;"ColorizationAfterglow"=dword:c43c3f47
@@ -518,11 +524,12 @@ Windows Registry Editor Version 5.00
 ;Turn off user tracking
 "NoInstrumentation"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Clear the recent programs list for new users
 "ClearRecentProgForNewUserInStartMenu"=dword:00000001
 
-;Turn off caching of thumbnail pictures (VDI)
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;Turn off caching of thumbnail pictures
 "NoThumbnailCache"=dword:00000001
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
@@ -534,9 +541,27 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
-;Active Directory searches return 5000 maximum (VDI)
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;Active Directory searches return 5000 maximum
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Directory UI]
 "QueryLimit"=dword:00005000
+
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
+;Lock Screen - Disable Windows Spotlight features
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsSpotlightFeatures"=dword:00000001
+
+;Lock Screen - Windows Spotlight; Do not use diagnostic data for tailored experiences
+"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
+
+;Lock Screen - Windows Spotlight; Do not suggest third-party content
+"DisableThirdPartySuggestions"=dword:00000001
+
+;Turn off the Windows Welcome Experience
+"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
+
+;Disable 'Windows Tips' ('How to use Windows' contextual popups)
+"DisableSoftLanding"=dword:00000001
 
 ;No policies
 
@@ -672,10 +697,35 @@ Windows Registry Editor Version 5.00
 "ForegroundLockTimeout"=dword:00000000
 
 ;Disable Aero Snap
-;"WindowArrangementActive"=dword:00000000
+"WindowArrangementActive"=dword:00000000
 
 ;Auto end tasks at log off or shut down
 "AutoEndTasks"="1"
+
+;Keyboard - Disable Sticky Keys
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\StickyKeys]
+"Flags"="506"
+
+;Keyboard - Disable Filter Keys
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\Keyboard Response]
+"Flags"="122"
+
+;Keyboard - Disable Toggle Keys
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\ToggleKeys]
+"Flags"="58"
+
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;On Screen Keyboard - Disable Key Stroke Delay
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Osk]
+"KeystrokeDelay"=dword:00000000
+
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;On Screen Keyboard - Disable First Repeat Delay
+"FirstRepeatDelay"=dword:00000000
+
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;On Screen Keyboard - Disable Next Repeat Delay
+"NextRepeatDelay"=dword:00000000
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Mouse - Disable Menu Show Delay
@@ -777,6 +827,11 @@ Windows Registry Editor Version 5.00
 ;Take no action when memory card connected
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\CameraAlternate\ShowPicturesOnArrival]
 @="MSTakeNoAction"
+
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;Temporary Internet Files to Non Persistent
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
+"Persistent"=dword:00000000
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;'Get to know my typing'; Restrict Implicit Ink Collection
