@@ -65,7 +65,7 @@ Windows Registry Editor Version 5.00
 "HideFileExt"=dword:00000000
 
 ;Explorer - Don't change the upper/lower case of filenames
-"DontPrettyPath"=dword:00000000
+"DontPrettyPath"=dword:00000001
 
 ;Explorer - Disable 'Use Sharing Wizard'
 ;"SharingWizardOn"=dword:00000000
