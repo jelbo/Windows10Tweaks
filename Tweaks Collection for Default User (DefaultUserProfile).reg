@@ -271,14 +271,14 @@ Windows Registry Editor Version 5.00
 ;Visual Effects - Enable show thumbnails instead of icons
 "IconsOnly"=dword:00000000
 
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
+;Visual Effects - Enable translucent selection rectangle
+"ListviewAlphaSelect"=dword:00000001
+
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Visual Effects - Disable saving taskbar thumbnail previews
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\DWM]
 "AlwaysHibernateThumbnails"=dword:00000000
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
-;Visual Effects - Enable translucent selection rectangle
-"ListviewAlphaSelect"=dword:00000001
 
 ;Visual Effects - Enable colored title bars
 "EnableWindowColorization"=dword:00000001
@@ -897,3 +897,7 @@ Windows Registry Editor Version 5.00
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Disable automatically tablet mode switching
 "ConvertibleSlateModePromptPreference"=dword:00000000
+
+;Disable Background Application Manager periodic background scans (VDI)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
+"DisableWindowHinting"=dword:00000000
