@@ -287,6 +287,10 @@ Windows Registry Editor Version 5.00
 [HKEY_USERS\.DEFAULT\Accessibility\Keyboard Response]
 "Flags"="122"
 
+;Disable Logon Screensaver
+[HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+"ScreenSaveActive"="0"
+
 ;=================================
 ;============== HKCU =============
 ;=================================
@@ -530,12 +534,12 @@ Windows Registry Editor Version 5.00
 ;Visual Effects - Enable show thumbnails instead of icons
 "IconsOnly"=dword:00000000
 
+;Visual Effects - Enable translucent selection rectangle
+"ListviewAlphaSelect"=dword:00000001
+
 ;Visual Effects - Disable saving taskbar thumbnail previews
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
 "AlwaysHibernateThumbnails"=dword:00000000
-
-;Visual Effects - Enable translucent selection rectangle
-"ListviewAlphaSelect"=dword:00000001
 
 ;Visual Effects - Enable colored title bars
 "EnableWindowColorization"=dword:00000001
@@ -1097,3 +1101,7 @@ Windows Registry Editor Version 5.00
 ;Disable Microsoft RSS Feeds
 [HKEY_CURRENT_USER\Software\Microsoft\Feeds]
 "SyncStatus"=dword:00000000
+
+;Disable Background Application Manager periodic background scans (VDI)
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
+"DisableWindowHinting"=dword:00000000
