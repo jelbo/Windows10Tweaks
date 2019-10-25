@@ -51,6 +51,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "NoSaveSettings"=dword:00000000
 
+;Explorer - Default search results in 'details view'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell\{7FDE1A1E-8B31-49A5-93B8-6BE14CFA4943}]
+"LogicalViewMode"=dword:00000001
+"Mode"=dword:00000004
+
 ;Explorer - Launch to This PC instead of Quick Access
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "LaunchTo"=dword:00000001
@@ -219,6 +224,9 @@ Windows Registry Editor Version 5.00
 ;Start Menu - Disable 'Show recently opened items in Jump Lists on Start or the taskbar'
 "Start_TrackDocs"=dword:00000000
 
+;Start Menu - Disable 'Highlight newly installed programs' notification
+"Start_NotifyNewApps"=dword:00000000
+
 ;======== Personalization ========
 ;=================================
 
@@ -257,6 +265,12 @@ Windows Registry Editor Version 5.00
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
 ;Visual Effects - Enable show icon drop shadows
 "ListviewShadow"=dword:00000001
+
+;Disable cursor blink (VDI)
+;"DisableCursorBlink"=dword:00000001
+
+;Set cursor blink rate to none (VDI)
+;"CursorBlinkRate"=dword:00000001
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Visual Effects - Disable animation when minimizing and maximizing
@@ -316,6 +330,10 @@ Windows Registry Editor Version 5.00
 
 ;Alt-Tab - 80% dimmed desktop background 
 ;"BackgroundDimmingLayer_percent"=dword:00000050
+
+;Add 'This PC' to desktop
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000001
 
 ;Themes - Prevent Windows themes from changing cursors
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
@@ -557,7 +575,10 @@ Windows Registry Editor Version 5.00
 ;Lock Screen - Windows Spotlight; Do not suggest third-party content
 "DisableThirdPartySuggestions"=dword:00000001
 
-;Turn off the Windows Welcome Experience
+;Disable 'Consumer Features' (aka automatically downloading sponsored apps)
+"DisableWindowsConsumerFeatures"=dword:00000001
+
+;Disable the Windows Welcome Experience
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
 
 ;Disable 'Windows Tips' ('How to use Windows' contextual popups)
@@ -653,7 +674,7 @@ Windows Registry Editor Version 5.00
 "Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe"=dword:00000000
 
 ;Apps - Disable additional foistware
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "FeatureManagementEnabled"=dword:00000000
 "OemPreInstalledAppsEnabled"=dword:00000000
 "PreInstalledAppsEnabled"=dword:00000000
@@ -663,24 +684,23 @@ Windows Registry Editor Version 5.00
 ;Apps - Disable automatically installing suggested apps
 "SilentInstalledAppsEnabled"=dword:00000000
 
-;Apps - Don't prompt to 'Look for an app in the Store'
-"NoUseStoreOpenWith"=dword:00000001
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
+;Disable 'Get tips, tricks and suggestions as you use Windows' #1
+"SoftLandingEnabled"=dword:00000000
 
-;Disable 'Get tips, tricks, and suggestions as you use Windows'
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Microsoft\Windows\CurrentVersion\Explorer]
+;Disable 'Get tips, tricks and suggestions as you use Windows' #2
 "SubscribedContent-338389Enabled"=dword:00000000
 
 ;Disable 'Show me suggested content in the Settings app'
 "SubscribedContent-353696Enabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
-;Disable "Get tips, tricks and suggestions as you use Windows"
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-"SoftLandingEnabled"=dword:00000000
+;Disable 'Tailored experiences'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
 ;Remove OneDrive autorun entry
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Microsoft\Windows\CurrentVersion\Run\]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\]
 "OneDrive"=-
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
@@ -701,6 +721,10 @@ Windows Registry Editor Version 5.00
 
 ;Auto end tasks at log off or shut down
 "AutoEndTasks"="1"
+
+;Num Lock enabled
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Keyboard]
+"InitialKeyboardIndicators"="2"
 
 ;Keyboard - Disable Sticky Keys
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\StickyKeys]
@@ -729,6 +753,7 @@ Windows Registry Editor Version 5.00
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Mouse - Disable Menu Show Delay
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Desktop]
 "MenuShowDelay"="0"
 
 ;Mouse - Disable Mouse Hover Delay
@@ -758,7 +783,7 @@ Windows Registry Editor Version 5.00
 ;"MouseSpeed"="0"
 
 ;Lock Screen - Disable Dynamic Content
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "ContentDeliveryAllowed"=dword:00000000
 
 ;Lock Screen - Disable 'Get fun facts, tips and more from Windows and Cortana on your lock screen'
@@ -848,14 +873,14 @@ Windows Registry Editor Version 5.00
 "HarvestContacts"=dword:00000000
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;'Get to know my typing'; Don't accept the Privacy Policy
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Personalization\Settings]
-"AcceptedPrivacyPolicy"=dword:00000000
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;'Get to know my typing'; Disable sync language
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
 "Enabled"=dword:00000000
+
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;'Get to know my typing'; Don't accept the Privacy Policy
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Personalization\Settings]
+"AcceptedPrivacyPolicy"=dword:00000000
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable Aero Peek #1
@@ -884,6 +909,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
 "SignInMode"=dword:00000001
 
+;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
+;Disable automatically tablet mode switching
+"ConvertibleSlateModePromptPreference"=dword:00000000
+
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable Bing Search
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Search]
@@ -894,10 +923,15 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Feeds]
 "SyncStatus"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
-;Disable automatically tablet mode switching
-"ConvertibleSlateModePromptPreference"=dword:00000000
-
 ;Disable Background Application Manager periodic background scans (VDI)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
 "DisableWindowHinting"=dword:00000000
+
+;Disable VMware Tools tray icon (VDI)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\VMWare, Inc.\VMWare Tools]
+"ShowTray"=dword:00000000
+
+;Notepad font Fixedsys 9pt
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Notepad]
+"lfFaceName"="Fixedsys"
+"iPointSize"=dword:0000005a
