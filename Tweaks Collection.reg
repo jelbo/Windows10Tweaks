@@ -53,11 +53,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "AutoDownload"=dword:00000000
 
-;Apps - Disable "Consumer Features" (aka automatically downloading sponsored apps)
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsConsumerFeatures"=dword:00000001
-
 ;Lock Screen - Disable Windows Spotlight features
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightFeatures"=dword:00000001
 
 ;Lock Screen - Windows Spotlight; Do not use diagnostic data for tailored experiences
@@ -66,7 +63,10 @@ Windows Registry Editor Version 5.00
 ;Lock Screen - Windows Spotlight; Do not suggest third-party content
 "DisableThirdPartySuggestions"=dword:00000001
 
-;Turn off the Windows Welcome Experience
+;Disable 'Consumer Features' (aka automatically downloading sponsored apps)
+"DisableWindowsConsumerFeatures"=dword:00000001
+
+;Disable the Windows Welcome Experience
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
 
 ;Disable 'Windows Tips' ('How to use Windows' contextual popups)
@@ -107,6 +107,9 @@ Windows Registry Editor Version 5.00
 ;Disable 'You have new apps that can open this type of file'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "NoNewAppAlert"=dword:00000001
+
+;Disable prompting to 'Look for an app in the Store'
+"NoUseStoreOpenWith"=dword:00000001
 
 ;Disable Lock Screen #1
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
@@ -150,6 +153,18 @@ Windows Registry Editor Version 5.00
 ;Automatic Maintenance - Disable to wake up computer
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Task Scheduler\Maintenance]
 "WakeUp"=dword:00000000
+
+;Set diagnostic data level to Security only
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+"AllowTelemetry"=dword:00000000
+
+;Disable the Windows Customer Experience Improvement program
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
+"CEIPEnable"=dword:00000000
+
+;Disable Application Telemetry
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
+"AITEnable"=dword:00000000
 
 ;No policies
 
@@ -242,6 +257,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
 "LocationSyncEnabled"=dword:00000000
 
+;Disable retrieving device metadata from the internet
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
+"PreventDeviceMetadataFromNetwork"=dword:00000001
+
 ;Disable Windows Error Reporting
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
 "Disabled"=dword:00000001
@@ -266,6 +285,18 @@ Windows Registry Editor Version 5.00
 ;Enable NTFS long paths
 "LongPathsEnabled"=dword:00000001
 
+;Disable Hybrid Boot (fast startup) (VDI)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+"HiberbootEnabled"=dword:00000000
+
+;Disable Diagnostics Tracking Service
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\AutoLogger-Diagtrack-Listener]
+"Start"=dword:00000000
+
+;Disable 'SQMLogger'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\SQMLogger]
+"Start"=dword:00000000
+
 ;=================================
 ;============== HKUD =============
 ;=================================
@@ -285,6 +316,10 @@ Windows Registry Editor Version 5.00
 ;Keyboard - Disable Toggle Keys (login screen)
 [HKEY_USERS\.DEFAULT\Control Panel\Accessibility\ToggleKeys]
 "Flags"="58"
+
+;Keyboard - Enable Num Lock (login screen)
+[HKEY_USERS\.DEFAULT\Control Panel\Keyboard]
+"InitialKeyboardIndicators"="2"
 
 ;Keyboard - Disable Filter Keys (login screen)
 [HKEY_USERS\.DEFAULT\Accessibility\Keyboard Response]
@@ -326,6 +361,11 @@ Windows Registry Editor Version 5.00
 ;Explorer - Remember my views
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "NoSaveSettings"=dword:00000000
+
+;Explorer - Default search results in 'details view'
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell\{7FDE1A1E-8B31-49A5-93B8-6BE14CFA4943}]
+"LogicalViewMode"=dword:00000001
+"Mode"=dword:00000004
 
 ;Explorer - Launch to This PC instead of Quick Access
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -474,6 +514,7 @@ Windows Registry Editor Version 5.00
 "StartMenuLogOff"=dword:00000001
 
 ;Start Menu - Disable App Suggestions
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SystemPaneSuggestionsEnabled"=dword:00000000
 
 ;Start Menu - Disable 'Occasionally show suggestions in Start'
@@ -485,6 +526,9 @@ Windows Registry Editor Version 5.00
 
 ;Start Menu - Disable 'Show recently opened items in Jump Lists on Start or the taskbar' (VDI)
 ;"Start_TrackDocs"=dword:00000000
+
+;Start Menu - Disable 'Highlight newly installed programs' notification
+"Start_NotifyNewApps"=dword:00000000
 
 ;======== Personalization ========
 ;=================================
@@ -559,19 +603,19 @@ Windows Registry Editor Version 5.00
 ;"EnableTransparency"=dword:00000000
 
 ;Visual Effects - NEEDS RESEARCH
-"ColorizationAfterglow"=dword:c43c3f47
-"ColorizationAfterglowBalance"=dword:0000000a
-"ColorizationBlurBalance"=dword:00000001
-"ColorizationColor"=dword:c43c3f47
-"ColorizationColorBalance"=dword:00000059
-"ColorizationGlassAttribute"=dword:00000001
+;"ColorizationAfterglow"=dword:c43c3f47
+;"ColorizationAfterglowBalance"=dword:0000000a
+;"ColorizationBlurBalance"=dword:00000001
+;"ColorizationColor"=dword:c43c3f47
+;"ColorizationColorBalance"=dword:00000059
+;"ColorizationGlassAttribute"=dword:00000001
 
 ;Visual Effects - NEEDS RESEARCH
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
-"AccentPalette"=hex:62,67,74,ff,52,56,61,ff,47,4a,54,ff,3c,3f,47,ff,30,33,39,\
-  ff,25,27,2c,ff,15,16,19,ff,88,17,98,00
-"StartColorMenu"=dword:ff393330
-"AccentColorMenu"=dword:ff473f3c
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
+;"AccentPalette"=hex:62,67,74,ff,52,56,61,ff,47,4a,54,ff,3c,3f,47,ff,30,33,39,\
+;  ff,25,27,2c,ff,15,16,19,ff,88,17,98,00
+;"StartColorMenu"=dword:ff393330
+;"AccentColorMenu"=dword:ff473f3c
 
 ;Alt-Tab - Transparent background
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
@@ -580,10 +624,9 @@ Windows Registry Editor Version 5.00
 ;Alt-Tab - 80% dimmed desktop background 
 "BackgroundDimmingLayer_percent"=dword:00000050
 
-;Disable wide context menus
-;Broken since 1809
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]
-;"ImmersiveContextMenu"=dword:00000000
+;Add 'This PC' to desktop
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000001
 
 ;Themes - Prevent Windows themes from changing cursors
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
@@ -594,9 +637,6 @@ Windows Registry Editor Version 5.00
 
 ;Themes - Prevent Windows themes from changing wallpaper
 "WallpaperSetFromTheme"=dword:00000000
-
-;Themes - Disable transparency effects (VDI)
-;"EnableTransparency"=dword:00000000
 
 ;Sounds - Set to None and Disable
 [HKEY_CURRENT_USER\AppEvents\Schemes]
@@ -899,17 +939,27 @@ Windows Registry Editor Version 5.00
 ;Apps - Disable automatically installing suggested apps
 "SilentInstalledAppsEnabled"=dword:00000000
 
-;Apps - Don't prompt to 'Look for an app in the Store'
-"NoUseStoreOpenWith"=dword:00000001
-
-;Disable "Get tips, tricks and suggestions as you use Windows" #1
+;Disable 'Get tips, tricks and suggestions as you use Windows' #1
 "SoftLandingEnabled"=dword:00000000
 
-;Disable 'Get tips, tricks, and suggestions as you use Windows' #2
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+;Disable 'Get tips, tricks and suggestions as you use Windows' #2
 "SubscribedContent-338389Enabled"=dword:00000000
 
-;Disable Windows Game Recording and Broadcasting
+;Disable 'Show me suggested content in the Settings app'
+"SubscribedContent-353696Enabled"=dword:00000000
+
+;Disable 'Tailored experiences'
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
+
+;Remove OneDrive autorun entry
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\]
+"OneDrive"=-
+
+;Remove OneDrive Setup autorun entry
+"OneDriveSetup"=-
+
+;Disable Windows Game Recording and Broadcasting (Game Bar)
 [HKEY_CURRENT_USER\System\GameConfigStore]
 "GameDVR_Enabled"=dword:00000000
 
@@ -922,6 +972,10 @@ Windows Registry Editor Version 5.00
 
 ;Auto end tasks at log off or shut down (VDI)
 ;"AutoEndTasks"="1"
+
+;Num Lock enabled
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"InitialKeyboardIndicators"="2"
 
 ;Keyboard - Disable Sticky Keys
 [HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
@@ -1003,10 +1057,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptout"=dword:00000001
 
-;Purge cache for IE on every close of IE (VDI)
-;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
-;"Persistent"=dword:00000000
-
 ;Never let windows ask for my feedback
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
@@ -1043,18 +1093,6 @@ Windows Registry Editor Version 5.00
 ;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
 ;"Persistent"=dword:00000000
 
-;Disable 'Show me suggested content in the Settings app'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-"SubscribedContent-353696Enabled"=dword:00000000
-
-;Remove OneDrive autorun entry
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\]
-"OneDrive"=-
-
-;Remove OneDrive Setup autorun entry
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\]
-"OneDriveSetup"=-
-
 ;'Get to know my typing'; Restrict Implicit Ink Collection
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
 "RestrictImplicitInkCollection"=dword:00000001
@@ -1067,6 +1105,7 @@ Windows Registry Editor Version 5.00
 
 ;'Get to know my typing'; Disable sync language
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
+"Enabled"=dword:00000000
 
 ;'Get to know my typing'; Don't accept the Privacy Policy
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
@@ -1108,3 +1147,12 @@ Windows Registry Editor Version 5.00
 ;Disable Background Application Manager periodic background scans (VDI)
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
 "DisableWindowHinting"=dword:00000000
+
+;Disable VMware Tools tray icon (VDI)
+[HKEY_CURRENT_USER\SOFTWARE\VMWare, Inc.\VMWare Tools]
+"ShowTray"=dword:00000000
+
+;Notepad font Fixedsys 9pt
+[HKEY_CURRENT_USER\Software\Microsoft\Notepad]
+"lfFaceName"="Fixedsys"
+"iPointSize"=dword:0000005a
