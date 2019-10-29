@@ -871,7 +871,7 @@ Windows Registry Editor Version 5.00
 @="Deny"
 
 ;Apps - Disable 'Let apps use my microphone'
-[HKEY_CURRENT_USERSOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
 @="Deny"
 
 ;Apps - Disable 'Let apps access my notifications'
