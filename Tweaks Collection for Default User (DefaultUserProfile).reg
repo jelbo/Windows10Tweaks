@@ -603,7 +603,7 @@ Windows Registry Editor Version 5.00
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps use my microphone'
-[HKEY_LOCAL_MACHINE\DefaultUserProfileSoftware\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
 @="Deny"
 
 ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
