@@ -580,7 +580,7 @@ Windows Registry Editor Version 5.00
 
 ;Visual Effects - Disable Taskbar animations (VDI)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"TaskbarAnimations"=dword:00000000
+;"TaskbarAnimations"=dword:00000000
 
 ;Visual Effects - Enable show thumbnails instead of icons
 "IconsOnly"=dword:00000000
