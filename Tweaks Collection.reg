@@ -402,15 +402,15 @@ Windows Registry Editor Version 5.00
 ;Explorer - Enable Server Admin UI (?)
 "ServerAdminUI"=dword:00000001
 
-;Explorer - Disable 'Automatically hide scroll bars in Windows'
-[HKEY_CURRENT_USER\Control Panel\Accessibility]
-"DynamicScrollbars"=dword:00000001
-
 ;Navigation Pane - Show all folders in Explorer including Recycle Bin, Desktop, Control Panel
 "NavPaneShowAllFolders"=dword:00000001
 
 ;Navigation Pane - Automatically expand to current folder
 "NavPaneExpandToCurrentFolder"=dword:00000001
+
+;Explorer - Disable 'Automatically hide scroll bars in Windows'
+[HKEY_CURRENT_USER\Control Panel\Accessibility]
+"DynamicScrollbars"=dword:00000001
 
 ;Navigation Pane - Hide Shell Folder 3D Objects
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideMyComputerIcons]
