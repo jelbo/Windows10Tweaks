@@ -592,34 +592,28 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
 "AlwaysHibernateThumbnails"=dword:00000000
 
-;Visual Effects - Enable colored title bars
-"EnableWindowColorization"=dword:00000001
+;Visual Effects - Show accent color on the following surfaces: Title bars and window borders
 "ColorPrevalence"=dword:00000001
 
 ;Visual Effects - Enable colored title bar: dark grey for active
-"AccentColor"=dword:ff473f3c
+"AccentColor"=dword:ff6b5c51
+"EnableWindowColorization"=dword:00000001
+"ColorizationColor"=dword:c4515c6b
+"ColorizationAfterglow"=dword:c4515c6b
 
 ;Visual Effects - Enable colored title bar: light grey for inactive
-"AccentColorInactive"=dword:ffc0c0c0
+;"AccentColorInactive"=dword:ffc0c0c0
 
 ;Visual Effects - disable transparency effects (VDI)
 ;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 ;"EnableTransparency"=dword:00000000
 
-;Visual Effects - NEEDS RESEARCH
-;"ColorizationAfterglow"=dword:c43c3f47
-;"ColorizationAfterglowBalance"=dword:0000000a
-;"ColorizationBlurBalance"=dword:00000001
-;"ColorizationColor"=dword:c43c3f47
-;"ColorizationColorBalance"=dword:00000059
-;"ColorizationGlassAttribute"=dword:00000001
-
-;Visual Effects - NEEDS RESEARCH
-;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
-;"AccentPalette"=hex:62,67,74,ff,52,56,61,ff,47,4a,54,ff,3c,3f,47,ff,30,33,39,\
-;  ff,25,27,2c,ff,15,16,19,ff,88,17,98,00
-;"StartColorMenu"=dword:ff393330
-;"AccentColorMenu"=dword:ff473f3c
+;Visual Effects - Dark grey
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
+"AccentPalette"=hex:9f,b4,d1,00,8a,9d,b6,00,6e,7d,91,00,51,5c,6b,00,3b,44,52,\
+  00,26,2f,3b,00,1c,23,2e,00,ef,69,50,00
+"StartColorMenu"=dword:ff52443b
+"AccentColorMenu"=dword:ff6b5c51
 
 ;Alt-Tab - Transparent background
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
