@@ -602,7 +602,7 @@ Windows Registry Editor Version 5.00
 "ColorizationAfterglow"=dword:c4515c6b
 
 ;Visual Effects - Enable colored title bar: light grey for inactive
-;"AccentColorInactive"=dword:ffc0c0c0
+"AccentColorInactive"=dword:ffc0c0c0
 
 ;Visual Effects - disable transparency effects (VDI)
 ;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
