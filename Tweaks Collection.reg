@@ -595,20 +595,20 @@ Windows Registry Editor Version 5.00
 ;Visual Effects - Show accent color on the following surfaces: Title bars and window borders
 "ColorPrevalence"=dword:00000001
 
-;Visual Effects - Enable colored title bar: dark grey for active
+;Visual Effects - Enable colored title bar: Metal Blue for active
 "AccentColor"=dword:ff6b5c51
 "EnableWindowColorization"=dword:00000001
 "ColorizationColor"=dword:c4515c6b
 "ColorizationAfterglow"=dword:c4515c6b
 
-;Visual Effects - Enable colored title bar: light grey for inactive
+;Visual Effects - Enable colored title bar: Light Grey for inactive
 "AccentColorInactive"=dword:ffc0c0c0
 
 ;Visual Effects - disable transparency effects (VDI)
 ;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 ;"EnableTransparency"=dword:00000000
 
-;Visual Effects - Dark grey
+;Visual Effects - Metal Blue
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
 "AccentPalette"=hex:9f,b4,d1,00,8a,9d,b6,00,6e,7d,91,00,51,5c,6b,00,3b,44,52,\
   00,26,2f,3b,00,1c,23,2e,00,ef,69,50,00
