@@ -3,9 +3,9 @@ Windows Registry Editor Version 5.00
 ; Possible locations for a single setting:
 ;
 ; HKEY_LOCAL_MACHINE (Policies; dictate Settings, but not every Setting has a Policy)
-; HKEY_LOCAL_MACHINE (Settings)
+; HKEY_LOCAL_MACHINE (Settings, no policies)
 ; HKEY_CURRENT_USER (Policies; dictate Settings, but not every Setting has a Policy)
-; HKEY_CURRENT_USER (Settings)
+; HKEY_CURRENT_USER (Settings, no policies)
 ;
 ; Other locations
 ;
@@ -16,27 +16,105 @@ Windows Registry Editor Version 5.00
 ;============== HKLM =============
 ;=================================
 
+;=========== Start Menu ==========
+;=================================
+
+;No policies
+
+;Start Menu - Hide Power Button (VDI)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start]
+"HidePowerButton"=dword:00000001
+
 ;============ Explorer ===========
 ;=================================
 
-;Navigation Pane - Hide OneDrive (Shell Folder)
+;No policies
+
+;Hide OneDrive icon from 'Browser' dialog box (Open, Save, Save As) (System.IsPinnedToNameSpaceTree method)
+[HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+;Navigation Pane - Hide OneDrive (Shell Folder) (System.IsPinnedToNameSpaceTree method)
 [HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
 
-;Hide OneDrive icon from 'Browser' dialog box (Open, Save, Save As)
-[HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
-"System.IsPinnedToNameSpaceTree"=dword:00000000
+;Navigation Pane - Hide Quick Access
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+;"HubMode"=dword:00000001
 
 ;Navigation Pane - Remove Redundant Removable Drive Icon
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
 
-;======== Personalization ========
+;Navigation Pane - Hide 3D Objects (Shell Folder) (ThisPCPolicy method)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{31C0DD25-9439-4F12-BF41-7FF4EDA38722}\PropertyBag]
+"ThisPCPolicy"="Hide"
+
+;Navigation Pane - Hide Desktop (Shell Folder)(ThisPCPolicy method)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}\PropertyBag]
+"ThisPCPolicy"="Hide"
+
+;Navigation Pane - Hide Documents (Shell Folder) (ThisPCPolicy method)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{F42EE2D3-909F-4907-8871-4C22FC0BF756}\PropertyBag]
+"ThisPCPolicy"="Hide"
+
+;Navigation Pane - Hide Downloads (Shell Folder) (ThisPCPolicy method)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{7D83EE9B-2244-4E70-B1F5-5393042AF1E4}\PropertyBag]
+"ThisPCPolicy"="Hide"
+
+;Navigation Pane - Hide Music (Shell Folder) (ThisPCPolicy method)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A0C69A99-21C8-4671-8703-7934162FCF1D}\PropertyBag]
+"ThisPCPolicy"="Hide"
+
+;Navigation Pane - Hide Pictures (Shell Folder) (ThisPCPolicy method)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{0DDD015D-B06C-45D5-8C4C-F59713854639}\PropertyBag]
+"ThisPCPolicy"="Hide"
+
+;Navigation Pane - Hide Videos (Shell Folder) (ThisPCPolicy method)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{35286a68-3c57-41a1-bbb1-0eae73d76c95}\PropertyBag]
+"ThisPCPolicy"="Hide"
+
+;Navigation Pane - Hide 3D Objects (Shell Folder) (AllowedEnumeration method)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AllowedEnumeration]
+;"{31C0DD25-9439-4F12-BF41-7FF4EDA38722}"=dword:00000000
+
+;Navigation Pane - Hide Downloads (Shell Folder) (AllowedEnumeration method)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AllowedEnumeration]
+;"{374DE290-123F-4565-9164-39C4925E467B}"=dword:00000000
+
+;Navigation Pane - Hide Music (Shell Folder) (AllowedEnumeration method)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AllowedEnumeration]
+;"{4BD8D571-6D19-48D3-BE97-422220080E43}"=dword:00000000
+
+;Navigation Pane - Hide Pictures (Shell Folder) (AllowedEnumeration method)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AllowedEnumeration]
+;"{A990AE9F-A03B-4E80-94BC-9912D7504104}"=dword:00000000
+
+;Navigation Pane - Hide Videos (Shell Folder) (AllowedEnumeration method)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AllowedEnumeration]
+;"{18989B1D-99B5-455B-841C-AB7C74E4DDFC}"=dword:00000000
+
+;Navigation Pane - Hide Network (Shell Folder) (NonEnum method)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\NonEnum]
+;"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000000
+
+;========= Miscellaneous =========
 ;=================================
 
 ;Policies
 
-;Logon Screen - Apply the default user picture to all users (re-enables user-192.png)
+;Apps - 'Turn off Automatic Download and Install of updates'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"AutoDownload"=dword:00000000
+
+;'Do not show Windows Tips'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableSoftLanding"=dword:00000001
+
+;'Turn off Microsoft consumer experiences'
+"DisableWindowsConsumerFeatures"=dword:00000001
+
+;Logon Screen - 'Apply the default account picture to all users' (re-enables user-192.png)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
 
@@ -44,39 +122,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "DisableAcrylicBackgroundOnLogon"=dword:00000001
 
-;========= Miscellaneous =========
-;=================================
-
-;Policies
-
-;Apps - Disable automatic App updates
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-"AutoDownload"=dword:00000000
-
-;Lock Screen - Disable Windows Spotlight features
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsSpotlightFeatures"=dword:00000001
-
-;Lock Screen - Windows Spotlight; Do not use diagnostic data for tailored experiences
-"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
-
-;Lock Screen - Windows Spotlight; Do not suggest third-party content
-"DisableThirdPartySuggestions"=dword:00000001
-
-;Disable 'Consumer Features' (aka automatically downloading sponsored apps)
-"DisableWindowsConsumerFeatures"=dword:00000001
-
-;Disable the Windows Welcome Experience
-"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
-
-;Disable 'Windows Tips' ('How to use Windows' contextual popups)
-"DisableSoftLanding"=dword:00000001
-
-;Login - Display verbose messages 
+;Login - 'Display highly detailed status messages' 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
 
-;Login - Disable the Windows 10 First Logon animation
+;Login - Disable 'Show first sign-in animation'
 "EnableFirstLogonAnimation"=dword:00000000
 
 ;Login - Disable background image on logon screen (VDI)
@@ -86,83 +136,88 @@ Windows Registry Editor Version 5.00
 ;Forces symbolic links to be written to both linked logon sessions that are created, when UAC is enabled
 "EnableLinkedConnections"=dword:00000001
 
-;Disable Sync Files To OneDrive
+;'Prevent the usage of OneDrive for file storage'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
 "DisableFileSyncNGSC"=dword:00000001
 
-;Internet Explorer - Disables the customization wizard upon first launch of Internet Explorer
+;Internet Explorer - 'Prevent running First Run wizard'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
 "DisableFirstRunCustomize"=dword:00000001
 
-;Windows Search - Disable Cortana
+;Windows Search - Disable 'Allow Cortana'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 "AllowCortana"=dword:00000000
 
-;Windows Search - Disable Web Search
+;Windows Search - 'Don't search the web or display web results in Search'
 "ConnectedSearchUseWeb"=dword:00000000
 
-;Windows Search - Disable Location
+;Windows Search - 'Allow search and Cortana to use location'
 "AllowSearchToUseLocation"=dword:00000000
 
-;Disable 'You have new apps that can open this type of file'
+;'Do not show the 'new application installed' notification'
+;Disables 'You have new apps that can open this type of file'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "NoNewAppAlert"=dword:00000001
 
+;'Turn off access to the Store'
 ;Disable prompting to 'Look for an app in the Store'
 "NoUseStoreOpenWith"=dword:00000001
 
-;Disable Lock Screen #1
+;'Do not display the lock screen'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
 "NoLockScreen"=dword:00000001
 
-;Windows Update - Download Mode: WSUS only (aka disable PeerCaching)
+;Windows Update - Download Mode: 'HTTP only, no peering'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config]
 "DODownloadMode"=dword:00000000
 
-;Windows Update - Enable postponing automatic restarts for updates
+;Windows Update - 'Specify deadline before auto-restart for update installation'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 "SetAutoRestartDeadline"=dword:00000001
 
-;Windows Update - Set the number of days before a pending restart for Quality Updates will automatically be executed outside of Active Hours to 30 (maximum)
+;Windows Update - 'Specify the number of days before a pending restart will automatically be executed outside of active hours' (Quality Updates) to 30 days (maximum)
 "AutoRestartDeadlinePeriodInDays"=dword:0000001e
 
-;Windows Update - Set the number of days before a pending restart for Feature Updates will automatically be executed outside of Active Hours to 30 (maximum)
+;Windows Update - 'Specify the number of days before a pending restart will automatically be executed outside of active hours' (Feature Updates) to 30 days (maximum)
 "AutoRestartDeadlinePeriodInDaysForFeatureUpdates"=dword:0000001e
 
-;Windows Update - Defer Upgrades/Updates
+;Windows Update - 'Defer Upgrades and Updates'
 "DeferUpgrade"=dword:00000001
 
-;Windows Update - Defer Upgrades 8 months (maximum)
+;Windows Update - 'Defer upgrades for the following duration (months)': 8 (maximum)
 "DeferUpgradePeriod"=dword:00000008
 
-;Windows Update - Defer Updates 4 weeks (maximum)
+;Windows Update - 'Defer updates for the following duration (weeks)': 4 (maximum)
 ;"DeferUpdatePeriod"=dword:00000004
 
-;Windows Update - Disable Pausing Updates
-;"PauseDeferrals"=dword:00000000
+;Windows Update - 'Pause Upgrades and Updates'
+;"PauseDeferrals"=dword:00000001
 
 ;Disable Malicious Software Removal Tool
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
 "DontOfferThroughWUAU"=dword:00000001
 
-;Disable 'Send Settings To Cloud'
+;'Do not sync' (disables 'sync your settings')
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
 "DisableSettingSync"=dword:00000002
 
-;Automatic Maintenance - Disable to wake up computer
+;Disable 'Automatic Maintenance WakeUp Policy'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Task Scheduler\Maintenance]
 "WakeUp"=dword:00000000
 
-;Set diagnostic data level to Security only
+;'Allow Telemetry' to Security only (Enterprise only)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
 "AllowTelemetry"=dword:00000000
 
-;Disable the Windows Customer Experience Improvement program
+;'Allow Telemetry' to Basic
+"AllowTelemetry"=dword:00000001
+
+;'Turn off Windows Customer Experience Improvement Program'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
 "CEIPEnable"=dword:00000000
 
-;Disable Application Telemetry
+;'Turn off Application Telemetry'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "AITEnable"=dword:00000000
 
@@ -180,6 +235,10 @@ Windows Registry Editor Version 5.00
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Shell\ActionCenter\Quick Actions]
 ;"PinnedQuickActionSlotCount"=dword:00000000
 
+;Login - Disable CTRL+ALT+DEL requirement for logon
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"DisableCAD"=dword:00000001
+
 ;Add Console Lock Display power off timeout to Power Control Panel
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\8EC4B3A5-6868-48c2-BE75-4F3044BE88A7]
 "Attributes"=dword:00000002
@@ -188,7 +247,7 @@ Windows Registry Editor Version 5.00
 ;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmware-viewcomposer-ga]
 ;"SkipLicenseActivation"=dword:00000001
 
-;Disable Lock Screen #2
+;Disable Lock Screen
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\SessionData]
 "AllowLockScreen"=dword:00000000
 
@@ -233,7 +292,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\AppXk0g4vb8gvt7b93tg50ybcy892pge6jmt\Shell\ShellCreateVideo]
 "ProgrammaticAccessOnly"=""
 
-;Increase Service Startup Timeout to 120 seconds
+;Increase Service Startup Timeout to 120 seconds (VDI)
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control]
 "ServicesPipeTimeout"=dword:00120000
 
@@ -289,6 +348,10 @@ Windows Registry Editor Version 5.00
 ;Enable NTFS long paths
 "LongPathsEnabled"=dword:00000001
 
+;Disable 8.3 file name creation on NTFS partitions
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\FileSystem]
+"NtfsDisable8dot3NameCreation"=dword:00000001
+
 ;Disable Hybrid Boot (fast startup) (VDI)
 ;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
 ;"HiberbootEnabled"=dword:00000000
@@ -342,16 +405,16 @@ Windows Registry Editor Version 5.00
 
 ;Policies
 
-;Explorer - Display the full ribbon when File Explorer is opened the first time
+;Explorer - 'Display the full ribbon when File Explorer is opened the first time'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "ExplorerRibbonStartsMinimized"=dword:00000004
 
-;Explorer - Disable thumbnail caching on network folders (VDI)
+;Explorer - Disable creating thumbs.db on network folders (VDI)
 ;[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 ;"DisableThumbsDBOnNetworkFolders"=dword:00000001
 
-;Explorer - Disable File Explorer Search Box suggestions
+;Explorer - 'Turn off display of recent search entries in the File Explorer search box'
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows]
 "DisableSearchBoxSuggestions"=dword:00000001
 
@@ -363,11 +426,16 @@ Windows Registry Editor Version 5.00
 "FolderType"="NotSpecified"
 
 ;Explorer - Remember my views
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "NoSaveSettings"=dword:00000000
 
+;Explorer - Default to List view
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Streams]
+"Settings"=hex:08,00,00,00,03,00,00,00,00,00,00,00,e0,a5,1f,0e,73,35,cf,11,ae,\
+  69,08,00,2b,2e,12,62,04,00,00,00,10,00,00,00,43,00,00,00
+
 ;Explorer - Default search results in 'details view'
-[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell\{7FDE1A1E-8B31-49A5-93B8-6BE14CFA4943}]
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell\{7FDE1A1E-8B31-49A5-93B8-6BE14CFA4943}]
 "LogicalViewMode"=dword:00000001
 "Mode"=dword:00000004
 
@@ -408,30 +476,38 @@ Windows Registry Editor Version 5.00
 ;Navigation Pane - Automatically expand to current folder
 "NavPaneExpandToCurrentFolder"=dword:00000001
 
+;Explorer - Disable 'Show recently used files in Quick Access'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"ShowRecent"=dword:00000000
+
 ;Explorer - Disable 'Automatically hide scroll bars in Windows'
 [HKEY_CURRENT_USER\Control Panel\Accessibility]
-"DynamicScrollbars"=dword:00000001
+"DynamicScrollbars"=dword:00000000
 
-;Navigation Pane - Hide Shell Folder 3D Objects
+;Navigation Pane - Hide Libraries (Shell Folder) (System.IsPinnedToNameSpaceTree method)
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+;Navigation Pane - Hide 3D Objects (Shell Folder) (HideMyComputerIcons method)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideMyComputerIcons]
 "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"=dword:00000001
 
-;Navigation Pane - Hide Desktop (Shell Folder)
+;Navigation Pane - Hide Desktop (Shell Folder) (HideMyComputerIcons method)
 "{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"=dword:00000001
 
-;Navigation Pane - Hide Documents (Shell Folder)
+;Navigation Pane - Hide Documents (Shell Folder) (HideMyComputerIcons method)
 "{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
 
-;Navigation Pane - Hide Downloads (Shell Folder)
+;Navigation Pane - Hide Downloads (Shell Folder) (HideMyComputerIcons method)
 "{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
 
-;Navigation Pane - Hide Music (Shell Folder)
+;Navigation Pane - Hide Music (Shell Folder) (HideMyComputerIcons method)
 "{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}"=dword:00000001
 
-;Navigation Pane - Hide Pictures (Shell Folder)
+;Navigation Pane - Hide Pictures (Shell Folder) (HideMyComputerIcons method)
 "{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
 
-;Navigation Pane - Hide Videos (Shell Folder)
+;Navigation Pane - Hide Videos (Shell Folder) (HideMyComputerIcons method)
 "{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}"=dword:00000001
 
 ;============ Taskbar ============
@@ -442,7 +518,7 @@ Windows Registry Editor Version 5.00
 ;No policies
 
 ;Taskbar - Use small taskbar buttons
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "TaskbarSmallIcons"=dword:00000001
 
 ;Taskbar - Lock the taskbar
@@ -494,7 +570,7 @@ Windows Registry Editor Version 5.00
 "TaskbarAppsVisibleInTableMode"=dword:00000001
 
 ;Taskbar - Hide Windows Ink Workspace button
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]
 "PenWorkspaceButtonDesiredVisibility"=dword:00000000
 
 ;Taskbar - Disable web search
@@ -507,28 +583,28 @@ Windows Registry Editor Version 5.00
 
 ;Policies
 
-;Start Menu - Disable Live Tiles
+;Start Menu - 'Turn off tile notifications'
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
 "NoTileApplicationNotification"=dword:00000001
 
 ;No policies
 
 ;Start Menu - Show the log off option
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "StartMenuLogOff"=dword:00000001
 
 ;Start Menu - Disable App Suggestions
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SystemPaneSuggestionsEnabled"=dword:00000000
 
 ;Start Menu - Disable 'Occasionally show suggestions in Start'
 "SubscribedContent-338388Enabled"=dword:00000000
 
-;Start Menu - Disable 'Show most used apps' (VDI)
+;Start Menu - Disable 'Show most used apps'
 ;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 ;"Start_TrackProgs"=dword:00000000
 
-;Start Menu - Disable 'Show recently opened items in Jump Lists on Start or the taskbar' (VDI)
+;Start Menu - Disable 'Show recently opened items in Jump Lists on Start or the taskbar'
 ;"Start_TrackDocs"=dword:00000000
 
 ;Start Menu - Disable 'Highlight newly installed programs' notification
@@ -588,32 +664,35 @@ Windows Registry Editor Version 5.00
 ;Visual Effects - Enable translucent selection rectangle
 "ListviewAlphaSelect"=dword:00000001
 
-;Visual Effects - Disable saving taskbar thumbnail previews
+;Visual Effects - Disable saving taskbar thumbnail previews (VDI)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
 "AlwaysHibernateThumbnails"=dword:00000000
 
-;Visual Effects - Show accent color on the following surfaces: Title bars and window borders
+;Visual Effects - Show accent color on the following surfaces: Title bars and window borders (DWM: ColorPrevalence)
 "ColorPrevalence"=dword:00000001
 
-;Visual Effects - Enable colored title bar: Metal Blue for active
-"AccentColor"=dword:ff6b5c51
+;Visual Effects - Enable colored title bars (DWM: EnableWindowColorization)
 "EnableWindowColorization"=dword:00000001
-"ColorizationColor"=dword:c4515c6b
-"ColorizationAfterglow"=dword:c4515c6b
 
-;Visual Effects - Enable colored title bar: Light Grey for inactive
-"AccentColorInactive"=dword:ffc0c0c0
+;Visual Effects - Enable colored title bar: Metal Blue for active (DWM)
+"AccentColor"=dword:FF6B5C51
+"ColorizationColor"=dword:C4515C6B
+"ColorizationAfterglow"=dword:C4515C6B
+"ColorizationAfterglowBalance"=dword:C4515C6B
+
+;Visual Effects - Enable colored title bar: Light Grey for inactive (DWM)
+"AccentColorInactive"=dword:FFC0C0C0
+
+;Visual Effects -  Enable colored title bar: Metal Blue for active (Accent)
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
+"AccentColorMenu"=dword:FF6B5C51
+"StartColorMenu"=dword:FF52443B
+"AccentPalette"=hex:62,67,74,ff,52,56,61,ff,47,4a,54,ff,3c,3f,47,ff,30,33,39,\
+  ff,25,27,2c,ff,15,16,19,ff,88,17,98,00
 
 ;Visual Effects - disable transparency effects (VDI)
 ;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 ;"EnableTransparency"=dword:00000000
-
-;Visual Effects - Metal Blue
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
-"AccentPalette"=hex:9f,b4,d1,00,8a,9d,b6,00,6e,7d,91,00,51,5c,6b,00,3b,44,52,\
-  00,26,2f,3b,00,1c,23,2e,00,ef,69,50,00
-"StartColorMenu"=dword:ff52443b
-"AccentColorMenu"=dword:ff6b5c51
 
 ;Alt-Tab - Transparent background
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
@@ -624,7 +703,14 @@ Windows Registry Editor Version 5.00
 
 ;Add 'This PC' to desktop
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+;Internet Explorer
+"{871C5380-42A0-1069-A2EA-08002B30309D}"=dword:00000000
+;User's Files
+"{450D8FBA-AD25-11D0-98A8-0800361B1103}"=dword:00000000
+;This PC
 "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000001
+;Network
+"{208D2C60-3AEA-1069-A2D7-08002B30309D}"=dword:00000000
 
 ;Themes - Prevent Windows themes from changing cursors
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
@@ -811,102 +897,255 @@ Windows Registry Editor Version 5.00
 
 ;Policies
 
-;Notifications - Disable 'Get notifications from apps and other senders' #2 (VDI)
+;'Turn off all Windows spotlight features'
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsSpotlightFeatures"=dword:00000001
+
+;'Configure Windows spotlight on lock screen'
+"ConfigureWindowsSpotlight"=dword:00000002
+
+;'Turn off Windows Spotlight on Action Center'
+"DisableWindowsSpotlightOnActionCenter"=dword:00000001
+
+;'Turn off Windows Spotlight on Settings'
+"DisableWindowsSpotlightOnSettings"=dword:00000001
+
+;'Do not use diagnostic data for tailored experiences'
+"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
+
+;'Do not suggest third-party content in Windows spotlight'
+"DisableThirdPartySuggestions"=dword:00000001
+
+;'Turn off the Windows Welcome Experience'
+"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
+
+;Notifications - Disable 'Get notifications from apps and other senders' (VDI)
 ;[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
 ;"ToastEnabled"=dword:00000000
 
-;Notifications - Disable toast notifications (VDI)
+;Notifications - 'Turn off toast notifications' (VDI)
 ;"NoToastApplicationNotification"=dword:00000001
 
-;Disable 'Feature advertisement balloon notifications'
+;'Turn off feature advertisement balloon notifications'
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows]
 "NoBalloonFeatureAdvertisements"=dword:00000001
 
-;Do not add shares of recently opened documents to Network Locations (VDI)
-;[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+;'Do not add shares of recently opened documents to Network Locations' (VDI)
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 ;"NoRecentDocsNetHood"=dword:00000001
 
-;Turn off user tracking (VDI)
+;'Turn off user tracking' (VDI)
 ;"NoInstrumentation"=dword:00000001
 
-;Clear the recent programs list for new users (VDI)
+;'Clear the recent programs list for new users' (VDI)
 ;"ClearRecentProgForNewUserInStartMenu"=dword:00000001
 
-;Turn off caching of thumbnail pictures (VDI)
+;'Turn off caching of thumbnail pictures' (VDI)
 ;"NoThumbnailCache"=dword:00000001
 
-;Do not display or track items in Jump Lists from remote locations (VDI)
+;'Do not display or track items in Jump Lists from remote locations' (VDI)
 ;[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 ;"NoRemoteDestinations"=dword:00000001
 
 ;Notifications - Turn off all balloon notifications (VDI)
 ;"TaskbarNoNotification"=dword:00000001
 
-;Disable blocking downloaded files (Attachment Manager)
+;Disable blocking downloaded files ('Do not preserve zone information in file attachments')
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
 ;Active Directory searches return 5000 maximum (VDI)
-;[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Directory UI]
+;[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Directory UI]
 ;"QueryLimit"=dword:00005000
 
 ;No policies
 
 ;Apps - Disable 'Let apps use advertising ID'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
 ;Apps - Disable 'Let apps on my other devices open apps and continue experiences on this device'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SmartGlass]
 "UserAuthPolicy"=dword:00000000
 
+;Apps - Disable 'Allow Apps to access your microphone'
+;Better: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your location'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your webcam'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your notifications'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your motion'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\activity]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your account info'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your contacts'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your calendar'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your call history'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your email'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your tasks'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your messaging'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your radios'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your other devices'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your app diagnostics'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your documents'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your pictures'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your videos'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your file systems'
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
+"Value"="Deny"
+
 ;Apps - Disable 'Let apps use my camera'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E5323777-F976-4f5b-9B55-B94699C46E44}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E5323777-F976-4f5b-9B55-B94699C46E44}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let apps use my microphone'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let apps access my notifications'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{52079E78-A92B-413F-B213-E8FE35712E72}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{52079E78-A92B-413F-B213-E8FE35712E72}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let apps access my contacts'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let apps access my calendar'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let apps access my call history'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let apps access and send email'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let apps read or send messages (text or MMS)'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{992AFA70-6F47-4148-B3E9-3003349C1548}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{992AFA70-6F47-4148-B3E9-3003349C1548}]
+"Value"="Deny"
 
 ;Apps -Disable 'Let apps control radios'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}]
+"Value"="Deny"
 
 ;Apps - Disable 'Let your apps automatically share and sync info with wireless devices that don’t explicitly pair with your PC, tablet, or phone'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
-@="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
+"Value"="Deny"
+
+;Apps - Disable 'An app default was reset' for (most 3D object files) (Microsoft 3D Builder)
+[HKEY_CURRENT_USER\Software\Classes\AppXvhc4p7vz4b485xfp46hhk3fq3grkdgjg]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .htm, .html (Microsoft Edge)
+[HKEY_CURRENT_USER\Software\Classes\AppX4hxtad77fbk3jkkeerkrm0ze94wjf3s9]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .pdf (Microsoft Edge)
+[HKEY_CURRENT_USER\Software\Classes\AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .svg (Microsoft Edge)
+[HKEY_CURRENT_USER\Software\Classes\AppXde74bfzw9j31bzhcvsrxsyjnhhbq66cs]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .xml (Microsoft Edge)
+[HKEY_CURRENT_USER\Software\Classes\AppXcc58vyzkbjbs4ky0mxrmxf8278rk9b3t]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most movie formats) (Microsoft Photos)
+[HKEY_CURRENT_USER\Software\Classes\AppXk0g4vb8gvt7b93tg50ybcy892pge6jmt]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most image formats) (Microsoft Photos)
+[HKEY_CURRENT_USER\Software\Classes\AppX43hnxtbyyps62jhe9sqpdzxn1790zetc]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most raw image formats) (Microsoft Photos)
+[HKEY_CURRENT_USER\Software\Classes\AppX9rkaq77s0jzh1tyccadx9ghba15r6t3h]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most audio formats) (Zune Music)
+[HKEY_CURRENT_USER\Software\Classes\AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most movie formats) (Zune Video)
+[HKEY_CURRENT_USER\Software\Classes\AppX6eg8h5sxqq90pv53845wmnbewywdqq5h]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
 
 ;Apps - Disable SmartScreen Filter for Store Apps
-[HKEY_CURRENT_USERSOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost]
 "EnableWebContentEvaluation"=dword:00000000
 
-;Apps - Disable 'Let Apps run in the background'
+;Apps - Disable 'Let Apps run in the background' #1
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
 "GlobalUserDisabled"=dword:00000001
+
+;Apps - Disable 'Let Apps run in the background' #2
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"BackgroundAppGlobalToggle"=dword:00000000
 
 ;Apps - Disable automatic installation
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy]
@@ -914,20 +1153,31 @@ Windows Registry Editor Version 5.00
 
 ;Apps - Disable specific suggested apps
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps]
+;Wunderlist
 "6Wunderkinder.Wunderlist_b4cwydgxqx59r"=dword:00000000
+;Bing Finance
 "Microsoft.BingFinance_8wekyb3d8bbwe"=dword:00000000
+;Bing News
 "Microsoft.BingNews_8wekyb3d8bbwe"=dword:00000000
+;Bing Weather
 "Microsoft.BingWeather_8wekyb3d8bbwe"=dword:00000000
+;Fresh Paint
 "Microsoft.FreshPaint_8wekyb3d8bbwe"=dword:00000000
+;Solitaire Collection
 "Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe"=dword:00000000
+;Network Speed Test
 "Microsoft.NetworkSpeedTest_8wekyb3d8bbwe"=dword:00000000
+;Office Sway
 "Microsoft.Office.Sway_8wekyb3d8bbwe"=dword:00000000
+;Remote Desktop
 "Microsoft.RemoteDesktop_8wekyb3d8bbwe"=dword:00000000
+;Windows Alarms
 "Microsoft.WindowsAlarms_8wekyb3d8bbwe"=dword:00000000
+;Windows Sound Recorder
 "Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe"=dword:00000000
 
 ;Apps - Disable additional foistware
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "FeatureManagementEnabled"=dword:00000000
 "OemPreInstalledAppsEnabled"=dword:00000000
 "PreInstalledAppsEnabled"=dword:00000000
@@ -936,6 +1186,10 @@ Windows Registry Editor Version 5.00
 
 ;Apps - Disable automatically installing suggested apps
 "SilentInstalledAppsEnabled"=dword:00000000
+
+;Disable Language Bar
+[HKEY_CURRENT_USER\Software\Microsoft\CTF\LangBar]
+"ShowStatus"=dword:00000003
 
 ;Disable 'Get tips, tricks and suggestions as you use Windows' #1
 "SoftLandingEnabled"=dword:00000000
@@ -947,7 +1201,7 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-353696Enabled"=dword:00000000
 
 ;Disable 'Tailored experiences'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
 "TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
 
 ;Remove OneDrive autorun entry
@@ -1028,7 +1282,7 @@ Windows Registry Editor Version 5.00
 "MouseSpeed"="0"
 
 ;Lock Screen - Disable Dynamic Content
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "ContentDeliveryAllowed"=dword:00000000
 
 ;Lock Screen - Disable 'Get fun facts, tips and more from Windows and Cortana on your lock screen'
@@ -1041,11 +1295,11 @@ Windows Registry Editor Version 5.00
 "RotatingLockScreenOverlayEnabled"=dword:00000000
 
 ;Lock Screen - Disable Tile Migrate?
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lock Screen]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lock Screen]
 "TileMigrated"=dword:00000000
 
 ;Lock Screen - Notifications; Disable 'Show notifications on the lock screen'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings]
 "NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK"=dword:00000000
 
 ;Lock Screen - Notifications; Disable 'Show alarms, reminders,and incoming VoIP calls on the lock screen'
@@ -1056,11 +1310,11 @@ Windows Registry Editor Version 5.00
 "HttpAcceptLanguageOptout"=dword:00000001
 
 ;Never let windows ask for my feedback
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+[HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
 
 ;Disable 'Let Windows manage my default printer'
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows]
 "LegacyDefaultPrinterMode"=dword:00000001
 
 ;Notifications - Disable 'Get notifications from apps and other senders' #1 (VDI)
@@ -1068,11 +1322,11 @@ Windows Registry Editor Version 5.00
 ;"ToastEnabled"=dword:00000000
 
 ;Notifications - Disable Security and Maintenance notifications (VDI)
-;[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance]
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance]
 ;"Enabled"=dword:00000000
 
 ;Don't add "- Shortcut" text to the name of newly created shortcuts
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "link"=hex:00,00,00,00
 
 ;Disable AutoPlay
@@ -1092,7 +1346,7 @@ Windows Registry Editor Version 5.00
 ;"Persistent"=dword:00000000
 
 ;'Get to know my typing'; Restrict Implicit Ink Collection
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
+[HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization]
 "RestrictImplicitInkCollection"=dword:00000001
 
 ;'Get to know my typing'; Restrict Implicit Text Collection
@@ -1102,11 +1356,11 @@ Windows Registry Editor Version 5.00
 "HarvestContacts"=dword:00000000
 
 ;'Get to know my typing'; Disable sync language
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
 "Enabled"=dword:00000000
 
 ;'Get to know my typing'; Don't accept the Privacy Policy
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
+[HKEY_CURRENT_USER\Software\Microsoft\Personalization\Settings]
 "AcceptedPrivacyPolicy"=dword:00000000
 
 ;Disable Aero Peek #1
@@ -1114,7 +1368,7 @@ Windows Registry Editor Version 5.00
 "EnableAeroPeek"=dword:00000000
 
 ;Disable Aero Peek #2 (a.k.a. Preview Desktop)
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisablePreviewDesktop"=dword:00000001
 
 ;Disable Aero Shake
@@ -1128,14 +1382,14 @@ Windows Registry Editor Version 5.00
 "AppCaptureEnabled"=dword:00000000
 
 ;Use desktop mode When I sign in
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
 "SignInMode"=dword:00000001
 
 ;Disable automatically tablet mode switching
 "ConvertibleSlateModePromptPreference"=dword:00000000
 
 ;Disable Bing Search
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
 "BingSearchEnabled"=dword:00000000
 
 ;Disable Microsoft RSS Feeds
@@ -1143,11 +1397,11 @@ Windows Registry Editor Version 5.00
 "SyncStatus"=dword:00000000
 
 ;Disable Background Application Manager periodic background scans (VDI)
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
 "DisableWindowHinting"=dword:00000000
 
 ;Disable VMware Tools tray icon (VDI)
-[HKEY_CURRENT_USER\SOFTWARE\VMWare, Inc.\VMWare Tools]
+[HKEY_CURRENT_USER\Software\VMWare, Inc.\VMWare Tools]
 "ShowTray"=dword:00000000
 
 ;Notepad font Fixedsys 9pt
