@@ -22,22 +22,26 @@ Windows Registry Editor Version 5.00
 
 ; This .reg file contains adjustments from own findings and VMware's OSOT, targeting a good user experience on a nonpersistent VDI environment.
 
+;=================================
+;============== HKCU =============
+;=================================
+
 ;============ Explorer ===========
 ;=================================
 
 ;Policies
 
-;Explorer - Display the full ribbon when File Explorer is opened the first time
+;Explorer - 'Display the full ribbon when File Explorer is opened the first time'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Explorer]
 "ExplorerRibbonStartsMinimized"=dword:00000004
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
-;Exporer - Disable thumbnail caching on network folders
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Explorer]
-"DisableThumbsDBOnNetworkFolders"=dword:00000001
+;Explorer - Disable creating thumbs.db on network folders (VDI)
+;[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Explorer]
+;"DisableThumbsDBOnNetworkFolders"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Explorer - Disable File Explorer Search Box suggestions
+;Explorer - 'Turn off display of recent search entries in the File Explorer search box'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows]
 "DisableSearchBoxSuggestions"=dword:00000001
 
 ;No policies
@@ -51,8 +55,13 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "NoSaveSettings"=dword:00000000
 
+;Explorer - Default to List view
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Streams]
+"Settings"=hex:08,00,00,00,03,00,00,00,00,00,00,00,e0,a5,1f,0e,73,35,cf,11,ae,\
+  69,08,00,2b,2e,12,62,04,00,00,00,10,00,00,00,43,00,00,00
+
 ;Explorer - Default search results in 'details view'
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell\{7FDE1A1E-8B31-49A5-93B8-6BE14CFA4943}]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell\{7FDE1A1E-8B31-49A5-93B8-6BE14CFA4943}]
 "LogicalViewMode"=dword:00000001
 "Mode"=dword:00000004
 
@@ -70,10 +79,10 @@ Windows Registry Editor Version 5.00
 "HideFileExt"=dword:00000000
 
 ;Explorer - Don't change the upper/lower case of filenames
-"DontPrettyPath"=dword:00000001
+"DontPrettyPath"=dword:00000000
 
 ;Explorer - Disable 'Use Sharing Wizard'
-;"SharingWizardOn"=dword:00000000
+"SharingWizardOn"=dword:00000000
 
 ;Explorer - Don't show notifications/adverts (OneDrive & new feature alerts)
 "ShowSyncProviderNotifications"=dword:00000001
@@ -88,46 +97,54 @@ Windows Registry Editor Version 5.00
 ;"ServerAdminUI"=dword:00000001
 
 ;Navigation Pane - Show all folders in Explorer including Recycle Bin, Desktop, Control Panel
-;"NavPaneShowAllFolders"=dword:00000001
+"NavPaneShowAllFolders"=dword:00000001
 
 ;Navigation Pane - Automatically expand to current folder
 "NavPaneExpandToCurrentFolder"=dword:00000001
 
+;Explorer - Disable 'Show recently used files in Quick Access'
+;[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer]
+;"ShowRecent"=dword:00000000
+
 ;Explorer - Disable 'Automatically hide scroll bars in Windows'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility]
-"DynamicScrollbars"=dword:00000001
+"DynamicScrollbars"=dword:00000000
 
-;Navigation Pane - Hide 3D Objects (Shell Folder)
+;Navigation Pane - Hide Libraries (Shell Folder) (System.IsPinnedToNameSpaceTree method)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+;Navigation Pane - Hide 3D Objects (Shell Folder) (HideMyComputerIcons method)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\HideMyComputerIcons]
 "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"=dword:00000001
 
-;Navigation Pane - Hide Desktop (Shell Folder)
-;"{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"=dword:00000001
+;Navigation Pane - Hide Desktop (Shell Folder) (HideMyComputerIcons method)
+"{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"=dword:00000001
 
-;Navigation Pane - Hide Documents (Shell Folder)
-;"{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
+;Navigation Pane - Hide Documents (Shell Folder) (HideMyComputerIcons method)
+"{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
 
-;Navigation Pane - Hide Downloads (Shell Folder)
-;"{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
+;Navigation Pane - Hide Downloads (Shell Folder) (HideMyComputerIcons method)
+"{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
 
-;Navigation Pane - Hide Music (Shell Folder)
+;Navigation Pane - Hide Music (Shell Folder) (HideMyComputerIcons method)
 "{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}"=dword:00000001
 
-;Navigation Pane - Hide Pictures (Shell Folder)
-;"{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
+;Navigation Pane - Hide Pictures (Shell Folder) (HideMyComputerIcons method)
+"{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
 
-;Navigation Pane - Hide Videos (Shell Folder)
+;Navigation Pane - Hide Videos (Shell Folder) (HideMyComputerIcons method)
 "{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}"=dword:00000001
 
 ;============ Taskbar ============
 ;=================================
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
+;No policies
+
 ;Taskbar - Use small taskbar buttons
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "TaskbarSmallIcons"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Taskbar - Lock the taskbar
 "TaskbarSizeMove"=dword:00000000
 
@@ -146,22 +163,18 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Hide People Bar #1
 "HidePeopleBar"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
 ;Taskbar - Hide People Bar #2
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
 "PeopleBand"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Taskbar - Hide Search Box
+;Taskbar - Hide Search Bar
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Search]
 "SearchboxTaskbarMode"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Taskbar - Hide Task View button
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "ShowTaskViewButton"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Taskbar - Disable combining taskbar buttons #2
 "TaskbarGlomLevel"=dword:00000002
 
@@ -169,20 +182,17 @@ Windows Registry Editor Version 5.00
 "ShowSecondsInSystemClock"=dword:00000001
 
 ;Taskbar - Increase transparency
-;"UseOLEDTaskbarTransparency"=dword:00000001
+"UseOLEDTaskbarTransparency"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU) (different)
-;Taskbar - Disable animations
+;Taskbar - Enable animations
 "TaskbarAnimations"=dword:00000001
 
 ;Taskbar - Disable previews (actually: show after 1.5 minute)
 "ExtendedUIHoverTime"=dword:00090000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in HKCU)
 ;Taskbar - Disable 'Hide app icons on the taskbar in tablet mode'
 ;"TaskbarAppsVisibleInTableMode"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
 ;Taskbar - Hide Windows Ink Workspace button
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]
 "PenWorkspaceButtonDesiredVisibility"=dword:00000000
@@ -197,7 +207,7 @@ Windows Registry Editor Version 5.00
 
 ;Policies
 
-;Start Menu - Disable Live Tiles
+;Start Menu - 'Turn off tile notifications'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
 "NoTileApplicationNotification"=dword:00000001
 
@@ -207,7 +217,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "StartMenuLogOff"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Start Menu - Disable App Suggestions
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SystemPaneSuggestionsEnabled"=dword:00000000
@@ -215,12 +224,10 @@ Windows Registry Editor Version 5.00
 ;Start Menu - Disable 'Occasionally show suggestions in Start'
 "SubscribedContent-338388Enabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Start Menu - Disable 'Show most used apps'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_TrackProgs"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Start Menu - Disable 'Show recently opened items in Jump Lists on Start or the taskbar'
 "Start_TrackDocs"=dword:00000000
 
@@ -230,12 +237,10 @@ Windows Registry Editor Version 5.00
 ;======== Personalization ========
 ;=================================
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
 ;Visual Effects - Set to Custom
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
 "VisualFXSetting"=dword:00000003
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Visual Effects - Adjust to the following options:
 ;Needs VisualFXSetting on 3
 ; (A) Smooth-scroll list boxes            1
@@ -254,15 +259,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Desktop]
 "UserPreferencesMask"=hex:9C,32,07,80,12,00,00,00
 
- ;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
 ;Visual Effects - Enable show window contents while dragging
 "DragFullWindows"="1"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
 ;Visual Effects - Enable smooth edges of screen fonts
 "FontSmoothing"="2"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
 ;Visual Effects - Enable show icon drop shadows
 "ListviewShadow"=dword:00000001
 
@@ -272,57 +274,49 @@ Windows Registry Editor Version 5.00
 ;Set cursor blink rate to none (VDI)
 ;"CursorBlinkRate"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Visual Effects - Disable animation when minimizing and maximizing
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Desktop\WindowMetrics]
 "MinAnimate"="0"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
-;Visual Effects - Enable Taskbar animations
+;Visual Effects - Disable Taskbar animations (VDI)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"TaskbarAnimations"=dword:00000001
+;"TaskbarAnimations"=dword:00000000
 
 ;Visual Effects - Enable show thumbnails instead of icons
 "IconsOnly"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT) (different)
 ;Visual Effects - Enable translucent selection rectangle
 "ListviewAlphaSelect"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Visual Effects - Disable saving taskbar thumbnail previews
+;Visual Effects - Disable saving taskbar thumbnail previews (VDI)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\DWM]
 "AlwaysHibernateThumbnails"=dword:00000000
 
-;Visual Effects - Enable colored title bars
-"EnableWindowColorization"=dword:00000001
+;Visual Effects - Show accent color on the following surfaces: Title bars and window borders (DWM: ColorPrevalence)
 "ColorPrevalence"=dword:00000001
 
-;Visual Effects - Enable colored title bar: dark grey for active
-"AccentColor"=dword:ff473f3c
+;Visual Effects - Enable colored title bars (DWM: EnableWindowColorization)
+"EnableWindowColorization"=dword:00000001
 
-;Visual Effects - Enable colored title bar: light grey for inactive
-"AccentColorInactive"=dword:ffc0c0c0
+;Visual Effects - Enable colored title bar: Metal Blue for active (DWM)
+"AccentColor"=dword:FF6B5C51
+"ColorizationColor"=dword:C4515C6B
+"ColorizationAfterglow"=dword:C4515C6B
+"ColorizationAfterglowBalance"=dword:C4515C6B
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Visual Effects - disable transparency effects
+;Visual Effects - Enable colored title bar: Light Grey for inactive (DWM)
+"AccentColorInactive"=dword:FFC0C0C0
+
+;Visual Effects -  Enable colored title bar: Metal Blue for active (Accent)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
+"AccentColorMenu"=dword:FF6B5C51
+"StartColorMenu"=dword:FF52443B
+"AccentPalette"=hex:62,67,74,ff,52,56,61,ff,47,4a,54,ff,3c,3f,47,ff,30,33,39,\
+  ff,25,27,2c,ff,15,16,19,ff,88,17,98,00
+
+;Visual Effects - disable transparency effects (VDI)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000000
-
-;Visual Effects - NEEDS RESEARCH
-;"ColorizationAfterglow"=dword:c43c3f47
-;"ColorizationAfterglowBalance"=dword:0000000a
-;"ColorizationBlurBalance"=dword:00000001
-;"ColorizationColor"=dword:c43c3f47
-;"ColorizationColorBalance"=dword:00000059
-;"ColorizationGlassAttribute"=dword:00000001
-
-;Visual Effects - NEEDS RESEARCH
-;[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
-;"AccentPalette"=hex:62,67,74,ff,52,56,61,ff,47,4a,54,ff,3c,3f,47,ff,30,33,39,\
-;  ff,25,27,2c,ff,15,16,19,ff,88,17,98,00
-;"StartColorMenu"=dword:ff393330
-;"AccentColorMenu"=dword:ff473f3c
 
 ;Alt-Tab - Transparent background
 ;[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
@@ -333,7 +327,14 @@ Windows Registry Editor Version 5.00
 
 ;Add 'This PC' to desktop
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+;Internet Explorer
+"{871C5380-42A0-1069-A2EA-08002B30309D}"=dword:00000000
+;User's Files
+"{450D8FBA-AD25-11D0-98A8-0800361B1103}"=dword:00000000
+;This PC
 "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000001
+;Network
+"{208D2C60-3AEA-1069-A2D7-08002B30309D}"=dword:00000000
 
 ;Themes - Prevent Windows themes from changing cursors
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
@@ -520,140 +521,254 @@ Windows Registry Editor Version 5.00
 
 ;Policies
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Notifications - Disable 'Get notifications from apps and other senders' #2
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
-"ToastEnabled"=dword:00000000
-
-;(Also present in default VMware OSOT template (July 2019))
-;Notifications - Turn off toast notifications
-"NoToastApplicationNotification"=dword:00000001
-
-;Disable 'Feature advertisement balloon notifications'
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows]
-"NoBalloonFeatureAdvertisements"=dword:00000001
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Do not add shares of recently opened documents to Network Locations
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"NoRecentDocsNetHood"=dword:00000001
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Turn off user tracking
-"NoInstrumentation"=dword:00000001
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
-;Clear the recent programs list for new users
-"ClearRecentProgForNewUserInStartMenu"=dword:00000001
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Turn off caching of thumbnail pictures
-"NoThumbnailCache"=dword:00000001
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Do not display or track items in Jump Lists from remote locations
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Explorer]
-"NoRemoteDestinations"=dword:00000001
-
-;Disable blocking downloaded files (Attachment Manager)
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
-"SaveZoneInformation"=dword:00000001
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Active Directory searches return 5000 maximum
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Directory UI]
-"QueryLimit"=dword:00005000
-
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
-;Lock Screen - Disable Windows Spotlight features
+;'Turn off all Windows spotlight features'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightFeatures"=dword:00000001
 
-;Lock Screen - Windows Spotlight; Do not use diagnostic data for tailored experiences
+;'Configure Windows spotlight on lock screen'
+"ConfigureWindowsSpotlight"=dword:00000002
+
+;'Turn off Windows Spotlight on Action Center'
+"DisableWindowsSpotlightOnActionCenter"=dword:00000001
+
+;'Turn off Windows Spotlight on Settings'
+"DisableWindowsSpotlightOnSettings"=dword:00000001
+
+;'Do not use diagnostic data for tailored experiences'
 "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
 
-;Lock Screen - Windows Spotlight; Do not suggest third-party content
+;'Do not suggest third-party content in Windows spotlight'
 "DisableThirdPartySuggestions"=dword:00000001
 
-;Disable 'Consumer Features' (aka automatically downloading sponsored apps)
-"DisableWindowsConsumerFeatures"=dword:00000001
-
-;Disable the Windows Welcome Experience
+;'Turn off the Windows Welcome Experience'
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
 
-;Disable 'Windows Tips' ('How to use Windows' contextual popups)
-"DisableSoftLanding"=dword:00000001
+;Notifications - Disable 'Get notifications from apps and other senders' (VDI)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+"ToastEnabled"=dword:00000000
+
+;Notifications - 'Turn off toast notifications' (VDI)
+"NoToastApplicationNotification"=dword:00000001
+
+;'Turn off feature advertisement balloon notifications'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows]
+"NoBalloonFeatureAdvertisements"=dword:00000001
+
+;'Do not add shares of recently opened documents to Network Locations' (VDI)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoRecentDocsNetHood"=dword:00000001
+
+;'Turn off user tracking' (VDI)
+"NoInstrumentation"=dword:00000001
+
+;'Clear the recent programs list for new users' (VDI)
+"ClearRecentProgForNewUserInStartMenu"=dword:00000001
+
+;'Turn off caching of thumbnail pictures' (VDI)
+;"NoThumbnailCache"=dword:00000001
+
+;'Do not display or track items in Jump Lists from remote locations' (VDI)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Explorer]
+"NoRemoteDestinations"=dword:00000001
+
+;Notifications - Turn off all balloon notifications (VDI)
+"TaskbarNoNotification"=dword:00000001
+
+;Disable blocking downloaded files ('Do not preserve zone information in file attachments')
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
+"SaveZoneInformation"=dword:00000001
+
+;Active Directory searches return 5000 maximum (VDI)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Policies\Microsoft\Windows\Directory UI]
+"QueryLimit"=dword:00005000
 
 ;No policies
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps use advertising ID'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps on my other devices open apps and continue experiences on this device'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\SmartGlass]
 "UserAuthPolicy"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
+;Apps - Disable 'Allow Apps to access your microphone'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your location'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your webcam'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your notifications'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your motion'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\activity]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your account info'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your contacts'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your calendar'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your call history'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your email'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your tasks'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your messaging'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your radios'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your other devices'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your app diagnostics'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your documents'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your pictures'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your videos'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
+"Value"="Deny"
+
+;Apps - Disable 'Allow Apps to access your file systems'
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
+"Value"="Deny"
+
 ;Apps - Disable 'Let apps use my camera'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E5323777-F976-4f5b-9B55-B94699C46E44}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps use my microphone'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps access my notifications'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{52079E78-A92B-413F-B213-E8FE35712E72}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps access my contacts'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps access my calendar'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps access my call history'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps access and send email'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let apps read or send messages (text or MMS)'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{992AFA70-6F47-4148-B3E9-3003349C1548}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps -Disable 'Let apps control radios'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Apps - Disable 'Let your apps automatically share and sync info with wireless devices that don’t explicitly pair with your PC, tablet, or phone'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
-@="Deny"
+"Value"="Deny"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
+;Apps - Disable 'An app default was reset' for (most 3D object files) (Microsoft 3D Builder)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppXvhc4p7vz4b485xfp46hhk3fq3grkdgjg]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .htm, .html (Microsoft Edge)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppX4hxtad77fbk3jkkeerkrm0ze94wjf3s9]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .pdf (Microsoft Edge)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .svg (Microsoft Edge)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppXde74bfzw9j31bzhcvsrxsyjnhhbq66cs]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for .xml (Microsoft Edge)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppXcc58vyzkbjbs4ky0mxrmxf8278rk9b3t]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most movie formats) (Microsoft Photos)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppXk0g4vb8gvt7b93tg50ybcy892pge6jmt]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most image formats) (Microsoft Photos)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppX43hnxtbyyps62jhe9sqpdzxn1790zetc]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most raw image formats) (Microsoft Photos)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppX9rkaq77s0jzh1tyccadx9ghba15r6t3h]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most audio formats) (Zune Music)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
+;Apps - Disable 'An app default was reset' for (most movie formats) (Zune Video)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\AppX6eg8h5sxqq90pv53845wmnbewywdqq5h]
+"NoOpenWith"=""
+"NoStaticDefaultVerb"=""
+
 ;Apps - Disable SmartScreen Filter for Store Apps
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\AppHost]
 "EnableWebContentEvaluation"=dword:00000000
 
-;Apps - Disable 'Let Apps run in the background'
+;Apps - Disable 'Let Apps run in the background' #1
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
 "GlobalUserDisabled"=dword:00000001
+
+;Apps - Disable 'Let Apps run in the background' #2
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Search]
+"BackgroundAppGlobalToggle"=dword:00000000
 
 ;Apps - Disable automatic installation
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy]
@@ -661,16 +776,27 @@ Windows Registry Editor Version 5.00
 
 ;Apps - Disable specific suggested apps
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps]
+;Wunderlist
 "6Wunderkinder.Wunderlist_b4cwydgxqx59r"=dword:00000000
+;Bing Finance
 "Microsoft.BingFinance_8wekyb3d8bbwe"=dword:00000000
+;Bing News
 "Microsoft.BingNews_8wekyb3d8bbwe"=dword:00000000
+;Bing Weather
 "Microsoft.BingWeather_8wekyb3d8bbwe"=dword:00000000
+;Fresh Paint
 "Microsoft.FreshPaint_8wekyb3d8bbwe"=dword:00000000
+;Solitaire Collection
 "Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe"=dword:00000000
+;Network Speed Test
 "Microsoft.NetworkSpeedTest_8wekyb3d8bbwe"=dword:00000000
+;Office Sway
 "Microsoft.Office.Sway_8wekyb3d8bbwe"=dword:00000000
+;Remote Desktop
 "Microsoft.RemoteDesktop_8wekyb3d8bbwe"=dword:00000000
+;Windows Alarms
 "Microsoft.WindowsAlarms_8wekyb3d8bbwe"=dword:00000000
+;Windows Sound Recorder
 "Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe"=dword:00000000
 
 ;Apps - Disable additional foistware
@@ -684,7 +810,10 @@ Windows Registry Editor Version 5.00
 ;Apps - Disable automatically installing suggested apps
 "SilentInstalledAppsEnabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
+;Disable Language Bar
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\CTF\LangBar]
+"ShowStatus"=dword:00000003
+
 ;Disable 'Get tips, tricks and suggestions as you use Windows' #1
 "SoftLandingEnabled"=dword:00000000
 
@@ -695,19 +824,16 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-353696Enabled"=dword:00000000
 
 ;Disable 'Tailored experiences'
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Privacy]
 "TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
 ;Remove OneDrive autorun entry
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\]
-"OneDrive"=-
+;[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Run\]
+;"OneDrive"=-
 
-;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
 ;Remove OneDrive Setup autorun entry
-"OneDriveSetup"=-
+;"OneDriveSetup"=-
 
-;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
 ;Disable Windows Game Recording and Broadcasting (Game Bar)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\System\GameConfigStore]
 "GameDVR_Enabled"=dword:00000000
@@ -719,8 +845,8 @@ Windows Registry Editor Version 5.00
 ;Disable Aero Snap
 "WindowArrangementActive"=dword:00000000
 
-;Auto end tasks at log off or shut down
-"AutoEndTasks"="1"
+;Auto end tasks at log off or shut down (VDI)
+;"AutoEndTasks"="1"
 
 ;Num Lock enabled
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Keyboard]
@@ -738,20 +864,16 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Accessibility\ToggleKeys]
 "Flags"="58"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;On Screen Keyboard - Disable Key Stroke Delay
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Osk]
-"KeystrokeDelay"=dword:00000000
+;On Screen Keyboard - Disable Key Stroke Delay (VDI)
+;[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Osk]
+;"KeystrokeDelay"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;On Screen Keyboard - Disable First Repeat Delay
-"FirstRepeatDelay"=dword:00000000
+;On Screen Keyboard - Disable First Repeat Delay (VDI)
+;"FirstRepeatDelay"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;On Screen Keyboard - Disable Next Repeat Delay
-"NextRepeatDelay"=dword:00000000
+;On Screen Keyboard - Disable Next Repeat Delay (VDI)
+;"NextRepeatDelay"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Mouse - Disable Menu Show Delay
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Desktop]
 "MenuShowDelay"="0"
@@ -783,7 +905,7 @@ Windows Registry Editor Version 5.00
 ;"MouseSpeed"="0"
 
 ;Lock Screen - Disable Dynamic Content
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "ContentDeliveryAllowed"=dword:00000000
 
 ;Lock Screen - Disable 'Get fun facts, tips and more from Windows and Cortana on your lock screen'
@@ -795,42 +917,34 @@ Windows Registry Editor Version 5.00
 ;Lock Screen - Disable 'Fun Facts'
 "RotatingLockScreenOverlayEnabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Lock Screen - Disable Tile Migrate?
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Lock Screen]
 "TileMigrated"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Lock Screen - Notifications; Disable 'Show notifications on the lock screen'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings]
 "NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Lock Screen - Notifications; Disable 'Show alarms, reminders,and incoming VoIP calls on the lock screen'
 "NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Disable 'Let websites provide locally relevant content by accessing my language list'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptout"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
-;Never let Windows ask for my feedback
+;Never let windows ask for my feedback
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable 'Let Windows manage my default printer'
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows NT\CurrentVersion\Windows]
 "LegacyDefaultPrinterMode"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019))
-;Notifications - Disable 'Get notifications from apps and other senders' #1
+;Notifications - Disable 'Get notifications from apps and other senders' #1 (VDI)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\PushNotifications]
 "ToastEnabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
-;Notifications - Disable Security and Maintenance notifications
+;Notifications - Disable Security and Maintenance notifications (VDI)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance]
 "Enabled"=dword:00000000
 
@@ -838,56 +952,44 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "link"=hex:00,00,00,00
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Disable AutoPlay
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
 "DisableAutoplay"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Take no action when removable drive connected
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\StorageOnArrival]
 @="MSTakeNoAction"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Take no action when memory card connected
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\CameraAlternate\ShowPicturesOnArrival]
 @="MSTakeNoAction"
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
-;Temporary Internet Files to Non Persistent
+;Temporary Internet Files to Non Persistent (VDI)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
 "Persistent"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;'Get to know my typing'; Restrict Implicit Ink Collection
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\InputPersonalization]
 "RestrictImplicitInkCollection"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;'Get to know my typing'; Restrict Implicit Text Collection
 "RestrictImplicitTextCollection"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;'Get to know my typing'; Do not scan contact informations
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\InputPersonalization\TrainedDataStore]
 "HarvestContacts"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;'Get to know my typing'; Disable sync language
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
 "Enabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;'Get to know my typing'; Don't accept the Privacy Policy
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Personalization\Settings]
 "AcceptedPrivacyPolicy"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable Aero Peek #1
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\DWM]
 "EnableAeroPeek"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable Aero Peek #2 (a.k.a. Preview Desktop)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisablePreviewDesktop"=dword:00000001
@@ -895,30 +997,24 @@ Windows Registry Editor Version 5.00
 ;Disable Aero Shake
 "DisallowShaking"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Don't replace Command Prompt with Windows PowerShell in the right-click start button menu or when pressing Windows key + X
 "DontUsePowerShellOnWinX"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in mandatory user profile's NTUSER.MAN)
-;Disable Game DVR (Game Recording)
+;Disable Game DVR
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\GameDVR]
 "AppCaptureEnabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Use desktop mode When I sign in
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
 "SignInMode"=dword:00000001
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT and HKCU)
 ;Disable automatically tablet mode switching
 "ConvertibleSlateModePromptPreference"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable Bing Search
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Windows\CurrentVersion\Search]
 "BingSearchEnabled"=dword:00000000
 
-;(Also present in default VMware OSOT template (July 2019), being injected in default user's NTUSER.DAT)
 ;Disable Microsoft RSS Feeds
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Feeds]
 "SyncStatus"=dword:00000000
@@ -928,7 +1024,7 @@ Windows Registry Editor Version 5.00
 "DisableWindowHinting"=dword:00000000
 
 ;Disable VMware Tools tray icon (VDI)
-[HKEY_LOCAL_MACHINE\DefaultUserProfile\SOFTWARE\VMWare, Inc.\VMWare Tools]
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\VMWare, Inc.\VMWare Tools]
 "ShowTray"=dword:00000000
 
 ;Notepad font Fixedsys 9pt
