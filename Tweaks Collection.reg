@@ -38,6 +38,16 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
 
+;Navigation Pane - Hide Network (Shell Folder) (NameSpace method)
+;Breaks UNC patch browsing!
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}]
+
+;Navigation Pane - Hide HomeGroup (Shell Folder) (NameSpace method)
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{B4FB3F98-C1EA-428d-A78A-D1F5659CBA93}]
+
+;Navigation Pane - Hide OneDrive (Shell Folder) (NameSpace method)
+;[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+
 ;Navigation Pane - Hide Quick Access
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 ;"HubMode"=dword:00000001
