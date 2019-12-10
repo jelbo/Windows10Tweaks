@@ -848,6 +848,10 @@ Windows Registry Editor Version 5.00
 ;Auto end tasks at log off or shut down (VDI)
 ;"AutoEndTasks"="1"
 
+;Internet Explorer - Disable 'recommended settings' tab
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_DEFAULTS_FRE_GLOBAL_FORCE_DISABLE]
+"iexplorer.exe"=dword:00000001
+
 ;Num Lock enabled
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Control Panel\Keyboard]
 "InitialKeyboardIndicators"="2"
