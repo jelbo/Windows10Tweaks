@@ -96,8 +96,8 @@ Windows Registry Editor Version 5.00
 ;Explorer - Enable Server Admin UI (?)
 ;"ServerAdminUI"=dword:00000001
 
-;Navigation Pane - Show all folders in Explorer including Recycle Bin, Desktop, Control Panel
-"NavPaneShowAllFolders"=dword:00000001
+;Navigation Pane - Disable Show all folders in Explorer including Recycle Bin, Desktop, Control Panel
+"NavPaneShowAllFolders"=dword:00000000
 
 ;Navigation Pane - Automatically expand to current folder
 "NavPaneExpandToCurrentFolder"=dword:00000001
@@ -112,6 +112,10 @@ Windows Registry Editor Version 5.00
 
 ;Navigation Pane - Hide Libraries (Shell Folder) (System.IsPinnedToNameSpaceTree method)
 [HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+;Navigation Pane - Hide User folder (Shell Folder) (System.IsPinnedToNameSpaceTree method)
+[HKEY_LOCAL_MACHINE\DefaultUserProfile\Software\Classes\CLSID\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
 
 ;Navigation Pane - Hide 3D Objects (Shell Folder) (HideMyComputerIcons method)
