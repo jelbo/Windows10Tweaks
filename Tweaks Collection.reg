@@ -498,6 +498,10 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
 
+;Navigation Pane - Hide User folder (Shell Folder) (System.IsPinnedToNameSpaceTree method)
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
 ;Navigation Pane - Hide 3D Objects (Shell Folder) (HideMyComputerIcons method)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideMyComputerIcons]
 "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"=dword:00000001
