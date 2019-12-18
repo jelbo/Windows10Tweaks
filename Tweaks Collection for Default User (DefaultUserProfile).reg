@@ -847,7 +847,7 @@ Windows Registry Editor Version 5.00
 "ForegroundLockTimeout"=dword:00000000
 
 ;Disable Aero Snap
-"WindowArrangementActive"=dword:00000000
+"WindowArrangementActive"="0"
 
 ;Auto end tasks at log off or shut down (VDI)
 ;"AutoEndTasks"="1"
