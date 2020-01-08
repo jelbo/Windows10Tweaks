@@ -425,7 +425,7 @@ Windows Registry Editor Version 5.00
 ;"DisableThumbsDBOnNetworkFolders"=dword:00000001
 
 ;Explorer - 'Turn off display of recent search entries in the File Explorer search box'
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows]
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
 
 ;No policies
@@ -941,7 +941,7 @@ Windows Registry Editor Version 5.00
 ;"NoToastApplicationNotification"=dword:00000001
 
 ;'Turn off feature advertisement balloon notifications'
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows]
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "NoBalloonFeatureAdvertisements"=dword:00000001
 
 ;'Do not add shares of recently opened documents to Network Locations' (VDI)
