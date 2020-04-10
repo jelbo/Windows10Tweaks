@@ -182,6 +182,12 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Disable combining taskbar buttons #2
 "TaskbarGlomLevel"=dword:00000002
 
+;Taskbar - Show taskbar on all displays
+"MMTaskbarEnabled"=dword:00000001
+
+;Taskbar - Never combine buttons on other taskbars
+"MMTaskbarGlomLevel"=dword:00000002
+
 ;Taskbar - Show seconds in SysTray Clock
 "ShowSecondsInSystemClock"=dword:00000001
 
