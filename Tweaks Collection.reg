@@ -589,6 +589,15 @@ Windows Registry Editor Version 5.00
 ;Taskbar - Disable 'Hide app icons on the taskbar in tablet mode'
 "TaskbarAppsVisibleInTableMode"=dword:00000001
 
+;Taskbar - Show taskbar on all displays
+"MMTaskbarEnabled"=dword:00000001
+
+;Taskbar - Show taskbar buttons on taskbar where window is open
+"MMTaskbarMode"=dword:00000002
+
+;Taskbar - Never combine buttons on other taskbars
+"MMTaskbarGlomLevel"=dword:00000002
+
 ;Taskbar - Hide Windows Ink Workspace button
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]
 "PenWorkspaceButtonDesiredVisibility"=dword:00000000
