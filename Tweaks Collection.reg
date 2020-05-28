@@ -22,8 +22,8 @@ Windows Registry Editor Version 5.00
 ;No policies
 
 ;Start Menu - Hide Power Button (VDI)
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start]
-"HidePowerButton"=dword:00000001
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Start]
+;"HidePowerButton"=dword:00000001
 
 ;============ Explorer ===========
 ;=================================
@@ -114,8 +114,8 @@ Windows Registry Editor Version 5.00
 ;Policies
 
 ;Apps - 'Turn off Automatic Download and Install of updates'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-"AutoDownload"=dword:00000000
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+;"AutoDownload"=dword:00000000
 
 ;'Do not show Windows Tips'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
@@ -124,7 +124,7 @@ Windows Registry Editor Version 5.00
 ;'Turn off Microsoft consumer experiences'
 "DisableWindowsConsumerFeatures"=dword:00000001
 
-;Logon Screen - 'Apply the default account picture to all users' (re-enables user-192.png)
+;Logon Screen - 'Apply the default account picture to all users' (re-enables user-xxx.png)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
 
@@ -205,8 +205,8 @@ Windows Registry Editor Version 5.00
 ;"PauseDeferrals"=dword:00000001
 
 ;Disable Malicious Software Removal Tool
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
-"DontOfferThroughWUAU"=dword:00000001
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+;"DontOfferThroughWUAU"=dword:00000001
 
 ;'Do not sync' (disables 'sync your settings')
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
@@ -218,7 +218,7 @@ Windows Registry Editor Version 5.00
 
 ;'Allow Telemetry' to Security only (Enterprise only)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
-"AllowTelemetry"=dword:00000000
+;"AllowTelemetry"=dword:00000000
 
 ;'Allow Telemetry' to Basic
 "AllowTelemetry"=dword:00000001
@@ -471,7 +471,7 @@ Windows Registry Editor Version 5.00
 "ShowSyncProviderNotifications"=dword:00000001
 
 ;Explorer - Launch folder windows in a separate process (separate explorer.exe Shell/File Explorer)
-"SeparateProcess"=dword:00000001
+;"SeparateProcess"=dword:00000001
 
 ;Explorer - Hide the status bar (if you use Classic Shell or Open Shell's status bar)
 "ShowStatusBar"=dword:00000000
@@ -577,7 +577,7 @@ Windows Registry Editor Version 5.00
 "ShowSecondsInSystemClock"=dword:00000001
 
 ;Taskbar - Increase transparency
-"UseOLEDTaskbarTransparency"=dword:00000001
+;"UseOLEDTaskbarTransparency"=dword:00000001
 
 ;Taskbar - Enable animations
 "TaskbarAnimations"=dword:00000001
@@ -694,7 +694,7 @@ Windows Registry Editor Version 5.00
 
 ;Visual Effects - Disable saving taskbar thumbnail previews (VDI)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
-"AlwaysHibernateThumbnails"=dword:00000000
+;"AlwaysHibernateThumbnails"=dword:00000000
 
 ;Visual Effects - Show accent color on the following surfaces: Title bars and window borders (DWM: ColorPrevalence)
 "ColorPrevalence"=dword:00000001
@@ -999,15 +999,15 @@ Windows Registry Editor Version 5.00
 ;Apps - Disable 'Allow Apps to access your microphone'
 ;Better: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone]
-"Value"="Deny"
+;"Value"="Deny"
 
 ;Apps - Disable 'Allow Apps to access your location'
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
-"Value"="Deny"
+;"Value"="Deny"
 
 ;Apps - Disable 'Allow Apps to access your webcam'
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
-"Value"="Deny"
+;"Value"="Deny"
 
 ;Apps - Disable 'Allow Apps to access your notifications'
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
@@ -1248,7 +1248,7 @@ Windows Registry Editor Version 5.00
 "ForegroundLockTimeout"=dword:00000000
 
 ;Disable Aero Snap
-"WindowArrangementActive"="0"
+;"WindowArrangementActive"="0"
 
 ;Auto end tasks at log off or shut down (VDI)
 ;"AutoEndTasks"="1"
