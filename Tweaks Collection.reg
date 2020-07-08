@@ -358,7 +358,6 @@ Windows Registry Editor Version 5.00
 "LongPathsEnabled"=dword:00000001
 
 ;Disable 8.3 file name creation on NTFS partitions
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\FileSystem]
 "NtfsDisable8dot3NameCreation"=dword:00000001
 
 ;Disable Hybrid Boot (fast startup) (VDI)
