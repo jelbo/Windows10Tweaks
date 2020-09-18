@@ -124,9 +124,9 @@ Windows Registry Editor Version 5.00
 ;'Turn off Microsoft consumer experiences'
 "DisableWindowsConsumerFeatures"=dword:00000001
 
-;Disable Storage Sense
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\StorageSense]
-"AllowStorageSenseGlobal"=dword:00000000
+;Disable Storage Sense (VDI)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\StorageSense]
+;"AllowStorageSenseGlobal"=dword:00000000
 
 ;Logon Screen - 'Apply the default account picture to all users' (re-enables user-xxx.png)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
@@ -1231,7 +1231,7 @@ Windows Registry Editor Version 5.00
 ;Disable 'Show me suggested content in the Settings app'
 "SubscribedContent-353696Enabled"=dword:00000000
 
-;Disable Storage Sense
+;Disable Storage Sense (VDI)
 ;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
 ;"01"=dword:00000000
 
