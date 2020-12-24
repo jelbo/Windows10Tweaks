@@ -267,7 +267,7 @@ Windows Registry Editor Version 5.00
 
 ;Context Menu - Disable 'Restore Previous Versions' entry
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
-"{596AB062-B4D2-4215-9F74-E9109B0A8153}"=""
+;"{596AB062-B4D2-4215-9F74-E9109B0A8153}"=""
 
 ;Context Menu - Disable 'Give Access To' entry (also removes Sharing tab in Properties!)
 ;"{F81E9010-6EA4-11CE-A7FF-00AA003CA9F6}"=""
@@ -502,7 +502,7 @@ Windows Registry Editor Version 5.00
 
 ;Navigation Pane - Hide User folder (Shell Folder) (System.IsPinnedToNameSpaceTree method)
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]
-"System.IsPinnedToNameSpaceTree"=dword:00000000
+;"System.IsPinnedToNameSpaceTree"=dword:00000000
 
 ;Navigation Pane - Hide 3D Objects (Shell Folder) (HideMyComputerIcons method)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideMyComputerIcons]
@@ -512,16 +512,16 @@ Windows Registry Editor Version 5.00
 "{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"=dword:00000001
 
 ;Navigation Pane - Hide Documents (Shell Folder) (HideMyComputerIcons method)
-"{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
+;"{D3162B92-9365-467A-956B-92703ACA08AF}"=dword:00000001
 
 ;Navigation Pane - Hide Downloads (Shell Folder) (HideMyComputerIcons method)
-"{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
+;"{088E3905-0323-4B02-9826-5D99428E115F}"=dword:00000001
 
 ;Navigation Pane - Hide Music (Shell Folder) (HideMyComputerIcons method)
-"{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}"=dword:00000001
+;"{3DFDF296-DBEC-4FB4-81D1-6A3438BCF4DE}"=dword:00000001
 
 ;Navigation Pane - Hide Pictures (Shell Folder) (HideMyComputerIcons method)
-"{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
+;"{24AD3AD4-A569-4530-98E1-AB02F9417AA8}"=dword:00000001
 
 ;Navigation Pane - Hide Videos (Shell Folder) (HideMyComputerIcons method)
 "{F86FA3AB-70D2-4FC7-9C99-FCBF05467F3A}"=dword:00000001
@@ -1404,14 +1404,14 @@ Windows Registry Editor Version 5.00
 
 ;Disable Aero Peek #1
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
-"EnableAeroPeek"=dword:00000000
+;"EnableAeroPeek"=dword:00000000
 
 ;Disable Aero Peek #2 (a.k.a. Preview Desktop)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"DisablePreviewDesktop"=dword:00000001
+;"DisablePreviewDesktop"=dword:00000001
 
 ;Disable Aero Shake
-"DisallowShaking"=dword:00000001
+;"DisallowShaking"=dword:00000001
 
 ;Don't replace Command Prompt with Windows PowerShell in the right-click start button menu or when pressing Windows key + X
 "DontUsePowerShellOnWinX"=dword:00000001
@@ -1436,12 +1436,12 @@ Windows Registry Editor Version 5.00
 "SyncStatus"=dword:00000000
 
 ;Disable Background Application Manager periodic background scans (VDI)
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
-"DisableWindowHinting"=dword:00000000
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\BamThrottling]
+;"DisableWindowHinting"=dword:00000000
 
 ;Disable VMware Tools tray icon (VDI)
-[HKEY_CURRENT_USER\Software\VMWare, Inc.\VMWare Tools]
-"ShowTray"=dword:00000000
+;[HKEY_CURRENT_USER\Software\VMWare, Inc.\VMWare Tools]
+;"ShowTray"=dword:00000000
 
 ;Notepad font Fixedsys 9pt
 [HKEY_CURRENT_USER\Software\Microsoft\Notepad]
