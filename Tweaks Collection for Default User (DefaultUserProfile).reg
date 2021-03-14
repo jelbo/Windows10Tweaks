@@ -21,6 +21,7 @@ Windows Registry Editor Version 5.00
 ; With REG LOAD you should use HKLM, not HKEY_LOCAL_MACHINE and there should not be a trailing backslash after the DefaultUserProfile name.
 
 ; This .reg file contains adjustments from own findings and VMware's OSOT, targeting a good user experience on a nonpersistent VDI environment.
+; It is not in sync with my main .reg file.
 
 ;=================================
 ;============== HKCU =============
