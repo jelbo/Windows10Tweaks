@@ -284,7 +284,7 @@ Windows Registry Editor Version 5.00
 ;Context Menu - Disable 'Scan with Windows Defender...' entry
 ;"{09A47860-11B0-4DA5-AFA5-26D86198A780}"=""
 
-;Context menu - Remove 'Troubleshoot Compatibility' entry
+;Context Menu - Remove 'Troubleshoot Compatibility' entry
 ;"{1D27F844-3A1F-4410-85AC-14651078412D}"=""
 
 ;Context Menu - 'Disable Pin To Taskbar' entry
@@ -495,6 +495,12 @@ Windows Registry Editor Version 5.00
 ;Explorer - Disable 'Automatically hide scroll bars in Windows'
 [HKEY_CURRENT_USER\Control Panel\Accessibility]
 "DynamicScrollbars"=dword:00000000
+
+;Context Menu - Restore classic context menu (Windows 11)
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}]
+@=""
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32]
+@=""
 
 ;Navigation Pane - Hide Libraries (Shell Folder) (System.IsPinnedToNameSpaceTree method)
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
