@@ -1,0 +1,21 @@
+;Context Menu - Restore classic context menu (Windows 11)
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}]
+@=""
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32]
+@=""
+
+;Start Menu - Show classic Start Menu (Windows 11)
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\]
+"Start_ShowClassicMode"=dword:00000001
+
+;Taskbar - Set size to small (0), medium (1) or large (2) (Windows 11)
+"TaskbarSi"=dword:00000000
+
+;Taskbar - Hide 'Widget' button
+"TaskbarDa"=dword:00000000
+
+;Taskbar - Change alignment to left (0) or center (1) (Windows 11)
+"TaskbarAl"=dword:00000000
+
+;Disable Snap Assist flyout (Windows 11)
+"EnableSnapAssistFlyout"=dword:00000000
